@@ -1,5 +1,6 @@
 package com.ctw.ffn131330;
 
+import com.ctw.ffn131330.classes.TestEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,13 @@ public class Ffn131330Application {
         return "hello team";
     }
     public static void main(String[] args) {
+
+
         SpringApplication.run(Ffn131330Application.class, args);
+
+        TestEntity test = new TestEntity("Florin", "email");
+
+        System.out.println(test.getName() + " " + test.getEmail());
     }
 
 }

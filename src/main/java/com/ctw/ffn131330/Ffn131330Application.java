@@ -1,27 +1,14 @@
 package com.ctw.ffn131330;
 
-import com.ctw.ffn131330.classes.TestEntity;
+import javafx.application.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @SpringBootApplication
 public class Ffn131330Application {
-
-    @RequestMapping("/")
-    String home(){
-        return "hello team";
-    }
     public static void main(String[] args) {
-
-
         SpringApplication.run(Ffn131330Application.class, args);
 
-        TestEntity test = new TestEntity("Florin", "email");
-
-        System.out.println(test.getName() + " " + test.getEmail());
     }
 
 }

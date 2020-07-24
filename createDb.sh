@@ -4,7 +4,7 @@ docker create -v /var/lib/mysql --name mysqldata mysql/mysql-server:latest
 
 docker run -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=root --volumes-from mysqldata --name=mysqldb mysql/mysql-server:latest
 
- winpty docker exec -it mysqldb bash
+docker exec -it mysqldb bash
  
 mysql -uroot -p
 

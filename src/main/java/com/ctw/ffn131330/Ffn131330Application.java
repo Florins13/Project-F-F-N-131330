@@ -8,7 +8,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Ffn131330Application {
     public static void main(String[] args) {
         SpringApplication.run(Ffn131330Application.class, args);
-
     }
-
 }

@@ -1,4 +1,9 @@
 package com.ctw.ffn131330.entity;
 
-public class Pool extends Game{
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Pool")
+public class Pool extends GameType {
 }

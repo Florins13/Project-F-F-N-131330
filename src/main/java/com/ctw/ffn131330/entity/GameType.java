@@ -1,11 +1,19 @@
 package com.ctw.ffn131330.entity;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import java.math.BigInteger;
 
-public abstract class Game {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "game_type")
+public abstract class GameType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

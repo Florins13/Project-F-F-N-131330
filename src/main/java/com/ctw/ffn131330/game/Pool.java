@@ -6,6 +6,5 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Pool")
 public class Pool extends GameType {
 }

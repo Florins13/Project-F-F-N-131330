@@ -1,4 +1,4 @@
-package com.ctw.ffn131330.entity;
+package com.ctw.ffn131330.game;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;

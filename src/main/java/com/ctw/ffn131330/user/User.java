@@ -1,4 +1,4 @@
-package com.ctw.ffn131330.entity;
+package com.ctw.ffn131330.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

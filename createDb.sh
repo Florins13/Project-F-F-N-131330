@@ -10,8 +10,8 @@ mysql -uroot -p
 
 root
 
-create database db_ffn_TEST;
+create database db_ffn_test;
 
 create user 'ADMIN_FFN'@'%' identified by 'password123';
 
-grant all on db_ffn_TEST.* to 'ADMIN_FFN'@'%';
+grant all on db_ffn_test.* to 'ADMIN_FFN'@'%';

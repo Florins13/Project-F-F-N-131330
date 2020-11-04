@@ -1,5 +1,7 @@
 package com.ctw.ffn131330.game;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -8,6 +10,7 @@ import java.math.BigInteger;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="game_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class GameType {
 
     @Id

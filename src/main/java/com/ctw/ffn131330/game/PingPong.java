@@ -1,8 +1,9 @@
 package com.ctw.ffn131330.game;
 
-import javax.persistence.Entity;
+import javax.persistence.DiscriminatorValue;
 
-@Entity
+
+@DiscriminatorValue("PING_PONG")
 public class PingPong extends GameType {
 
     private int score;

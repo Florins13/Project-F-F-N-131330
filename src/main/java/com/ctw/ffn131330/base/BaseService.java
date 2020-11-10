@@ -8,8 +8,6 @@ import java.math.BigInteger;
 @Service
 public abstract class BaseService <T extends BaseEntity> {
 
-    protected String var;
-
     public abstract BaseRepository<T> getRepository();
 
     @Transactional

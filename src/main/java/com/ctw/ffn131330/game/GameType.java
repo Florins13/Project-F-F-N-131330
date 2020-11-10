@@ -1,6 +1,6 @@
 package com.ctw.ffn131330.game;
 
-import com.ctw.ffn131330.utils.BaseEntity;
+import com.ctw.ffn131330.base.BaseEntity;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -13,14 +13,10 @@ import javax.persistence.InheritanceType;
 @DiscriminatorColumn(name="game_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class GameType extends BaseEntity {
 
-
     private String name;
-
-
 
     public GameType() {
     }
-
 
     public String getName() {
         return name;

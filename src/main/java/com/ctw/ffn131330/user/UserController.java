@@ -1,6 +1,9 @@
 package com.ctw.ffn131330.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,18 +21,18 @@ public class UserController {
         return userService.save(new User("Nuno"));
     }
 
-    @PostMapping("/getUserById")
-    public User getUserById(BigInteger id){
+    @GetMapping ("/getUserById/{id}")
+    public User getUserById(@PathVariable BigInteger id){
         return userService.get(id);
     }
 
-    @PostMapping("/getAllUsers")
+    @GetMapping ("/getAllUsers")
     public List<User> getAllUsers(){
         return userService.getAll();
     }
 
-    @PostMapping("/deleteUserById")
-    public void deleteUserById(BigInteger id){
+    @DeleteMapping ("/deleteUserById/{id}")
+    public void deleteUserById(@PathVariable BigInteger id){
         userService.delete(id);
     }
 

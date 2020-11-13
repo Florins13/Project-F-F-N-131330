@@ -16,6 +16,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @GetMapping ("/")
+    public String getIndex(){
+        return "Welcome to Side project!";
+    }
+
     @PostMapping("/saveUser")
     public User saveUser(@RequestBody User user){
         return userService.save(user);

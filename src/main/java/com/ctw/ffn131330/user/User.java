@@ -10,6 +10,7 @@ public class User extends BaseEntity {
     private String name;
 
     public User() {
+        counter++;
     }
 
     public User(String name) {

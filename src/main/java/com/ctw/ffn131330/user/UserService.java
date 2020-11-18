@@ -15,4 +15,12 @@ public class UserService extends BaseService <User> {
     public BaseRepository<User> getRepository() {
         return repository;
     }
+
+    public User checkUserNameNotNull(User usr) throws Exception {
+
+        if(usr.getName().isEmpty()){
+            throw new Exception(usr.getName());
+        }
+        return usr;
+    }
 }

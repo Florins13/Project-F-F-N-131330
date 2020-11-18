@@ -1,5 +1,6 @@
-package com.ctw.ffn131330.UserTests;
+package com.ctw.ffn131330.IntegrationTests.UserInt;
 
+import com.ctw.ffn131330.TestUtils.UserUtils;
 import com.ctw.ffn131330.user.UserController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class UserTests {
     @Autowired
     private UserController userController;
 
-    private UserTestsUtils userUtils = new UserTestsUtils();
+    private UserUtils userUtils = new UserUtils();
 
     // write test cases here
     @Test

@@ -1,4 +1,10 @@
 package com.ctw.ffn131330.tournament;
 
-public class Tournament {
+import com.ctw.ffn131330.base.BaseEntity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Tournament extends BaseEntity {
+
 }

@@ -1,7 +1,8 @@
 package com.ctw.ffn131330.game;
 
-import javax.persistence.DiscriminatorValue;
+public class Pool extends GameObj {
 
-@DiscriminatorValue("POOL")
-public class Pool extends GameType {
+    public static Boolean rules(Integer n){
+        return true;
+    }
 }

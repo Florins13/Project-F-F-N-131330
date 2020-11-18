@@ -1,22 +1,38 @@
 package com.ctw.ffn131330.game;
 
-import com.ctw.ffn131330.base.BaseEntity;
+import java.util.EnumSet;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+public enum GameType {
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="game_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class GameType extends BaseEntity {
+    POOL("bilhar") {
+        @Override
+        public Boolean rules(Integer n){
+            return Pool.rules(n);
+        }
+    },
+
+    PING_PONG("Tenis de mesa"){
+        @Override
+        public Boolean rules(Integer n){
+            return n < 0;
+        }
+    },
+
+    DARTS("setas"){
+        @Override
+        public Boolean rules(Integer n){
+            return n < 0;
+        }
+
+    };
 
     private String name;
 
-    public GameType() {
+    GameType(String name) {
+        this.name = name;
     }
+
+    public abstract Boolean rules(Integer n);
 
     public String getName() {
         return name;
@@ -25,4 +41,10 @@ public abstract class GameType extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static EnumSet<GameType> BallGames = EnumSet.of(POOL, PING_PONG);
+
+    public static EnumSet<GameType> NoBallGames = EnumSet.of(DARTS);
+
+
 }

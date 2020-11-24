@@ -19,6 +19,6 @@ public class MatchController {
 
     @PostMapping("/save")
     public Match saveMatch(){
-        return matchService.save(new Match(GameType.PING_PONG, userService.getAll()));
+        return matchService.save(new Match(GameType.PING_PONG));
     }
 }

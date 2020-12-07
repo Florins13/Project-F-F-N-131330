@@ -28,6 +28,11 @@ public class UserController {
         return userService.save(user);
     }
 
+    @PostMapping("/saveUser5char")
+    public User saveUser5char(@RequestBody User user) throws Exception {
+        return userService.check5chars(user);
+    }
+
     @GetMapping ("/getUserById/{id}")
     public User getUserById(@PathVariable Long id){
         return userService.get(id);
@@ -42,5 +47,7 @@ public class UserController {
     public void deleteUserById(@PathVariable Long id){
         userService.delete(id);
     }
+
+
 
 }

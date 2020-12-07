@@ -2,6 +2,7 @@ package com.ctw.ffn131330.user;
 
 import com.ctw.ffn131330.base.BaseEntity;
 import com.ctw.ffn131330.scoreStats.ScoreStats;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -10,7 +11,10 @@ import java.util.List;
 @Entity
 public class User extends BaseEntity {
 
+    @NonNull
     private String name;
+
+    private boolean userActive;
 
     @OneToMany(mappedBy = "user")
     private List<ScoreStats> scoresStats;
@@ -28,5 +32,13 @@ public class User extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setUserActive(boolean userActive) {
+        this.userActive = userActive;
+    }
+
+    public boolean isUserActive() {
+        return userActive;
     }
 }

@@ -2,6 +2,7 @@ package com.ctw.ffn131330.match;
 
 import com.ctw.ffn131330.base.BaseRepository;
 import com.ctw.ffn131330.base.BaseService;
+import com.ctw.ffn131330.match.payload.CreateMatchPayload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,10 @@ public class MatchService extends BaseService<Match> {
 
     public Boolean dummy(Match m){
         return m.getGameType().rules(1);
+    }
+
+
+    public Match createMatch(CreateMatchPayload newMatch) {
+        return null;
     }
 }

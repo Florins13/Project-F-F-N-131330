@@ -1,6 +1,7 @@
 package com.ctw.ffn131330.match;
 
 import com.ctw.ffn131330.game.GameType;
+import com.ctw.ffn131330.match.payload.CreateMatchPayload;
 import com.ctw.ffn131330.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,5 +21,10 @@ public class MatchController {
     @PostMapping("/save")
     public Match saveMatch(){
         return matchService.save(new Match(GameType.PING_PONG));
+    }
+
+    @PostMapping("/create")
+    public Match createMatch(CreateMatchPayload newMatch){
+        return matchService.createMatch(newMatch);
     }
 }

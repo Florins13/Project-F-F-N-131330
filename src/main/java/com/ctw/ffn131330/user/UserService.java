@@ -6,6 +6,8 @@ import com.ctw.ffn131330.exceptions.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class UserService extends BaseService <User> {
 
@@ -36,5 +38,22 @@ public class UserService extends BaseService <User> {
             throw new RuntimeException("This is runtime");
         }
         else throw new GenericException.TestException("Test exception message");
+    }
+
+    public void saveDefault() {
+        User a = new User();
+        a.setName("fatih");
+        a.setUserActive(true);
+        User b = new User();
+        b.setName("nuno");
+        b.setUserActive(true);
+        User c = new User();
+        c.setName("johny");
+        c.setUserActive(true);
+        User d = new User();
+        d.setName("florin");
+        d.setUserActive(true);
+
+        repository.saveAll(Arrays.asList(a,b,c,d));
     }
 }

@@ -1,19 +1,25 @@
 package com.ctw.ffn131330.match.payload;
 
 import com.ctw.ffn131330.user.User;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
 public class CreateMatchPayload {
 
+    @NonNull
     private List<User> teamOne;
 
-
+    @NonNull
     private List<User> teamTwo;
 
     private String matchStatus;
-    private long scheduledDate;
     private String gameType;
+
+    private long scheduledDate;
+
+    public CreateMatchPayload(){
+    }
 
     public List<User> getTeamOne() {
         return teamOne;

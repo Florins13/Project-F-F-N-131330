@@ -23,6 +23,7 @@ public class MatchService extends BaseService<Match> {
 
 
     public Match createMatch(CreateMatchPayload newMatch) {
-        return null;
+        Match match = new Match(newMatch);
+        return repository.save(match);
     }
 }

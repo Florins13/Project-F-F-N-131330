@@ -28,6 +28,11 @@ public class UserController {
         return userService.save(user);
     }
 
+    @PostMapping ("/saveDefault")
+    public void saveDefault(){
+        userService.saveDefault();
+    }
+
     @PostMapping("/saveUser5char")
     public User saveUser5char(@RequestBody User user) throws Exception {
         return userService.check5chars(user);

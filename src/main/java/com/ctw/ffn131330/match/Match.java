@@ -35,6 +35,9 @@ public class Match extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private MatchStatus matchStatus;
 
+    private Integer scoreTeamOne;
+    private Integer scoreTeamTwo;
+
 
     public Match(GameType gameType) {
         this.gameType = gameType;
@@ -53,14 +56,15 @@ public class Match extends BaseEntity {
         this.matchStatus = matchStatus;
         this.gameType = gameType;
         this.scheduledDate = newMatch.getScheduledDate();
-        newMatch.getTeamOne().stream().forEach(x -> addUser(x));
-        newMatch.getTeamTwo().stream().forEach(x -> addUser(x));
+        newMatch.getTeamOne().stream().forEach(x -> addUser(x, 1));
+        newMatch.getTeamTwo().stream().forEach(x -> addUser(x, 2));
     }
 
-    private void addUser(User usr){
+    private void addUser(User usr, final int teamNumber){
         ScoreStats scoreStats = new ScoreStats();
         scoreStats.setUser(usr);
         scoreStats.setMatch(this);
+        scoreStats.setTeamNumber(teamNumber);
         this.getScoresStats().add(scoreStats);
     }
 

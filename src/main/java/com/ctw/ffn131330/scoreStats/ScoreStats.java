@@ -23,6 +23,8 @@ public class ScoreStats extends BaseEntity {
     @JsonIgnore
     private Match match;
 
+    private Integer teamNumber;
+
     public ScoreStats(){
 
     }
@@ -42,6 +44,15 @@ public class ScoreStats extends BaseEntity {
     public void setMatch(Match match) {
         this.match = match;
     }
-//    @Column
+
+    public Integer getTeamNumber() {
+        return teamNumber;
+    }
+
+    public void setTeamNumber(Integer teamNumber) {
+        this.teamNumber = teamNumber;
+    }
+
+    //    @Column
 //    private int score;
 }

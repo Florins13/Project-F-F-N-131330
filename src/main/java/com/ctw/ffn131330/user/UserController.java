@@ -1,5 +1,6 @@
 package com.ctw.ffn131330.user;
 
+import com.ctw.ffn131330.match.Match;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,7 +54,10 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping("/getMatches")
+    @GetMapping("/getMatches/{userId}")
+    public List<Match> getMatches(@PathVariable Long userId){
+        return userService.getMatchByUsrId(userId);
+    }
 
 
 }

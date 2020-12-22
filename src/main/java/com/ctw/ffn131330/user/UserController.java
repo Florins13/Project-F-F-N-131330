@@ -35,21 +35,21 @@ public class UserController {
     }
 
     @PostMapping("/saveUser5char")
-    public User saveUser5char(@RequestBody User user) throws Exception {
+    public User saveUser5char(@RequestBody User user) {
         return userService.check5chars(user);
     }
 
-    @GetMapping ("/getUserById/{id}")
+    @GetMapping ("/getById/{id}")
     public User getUserById(@PathVariable Long id){
-        return userService.get(id);
+        return userService.getById(id);
     }
 
-    @GetMapping ("/getAllUsers")
+    @GetMapping ("/getAll")
     public List<User> getAllUsers(){
         return userService.getAll();
     }
 
-    @DeleteMapping ("/deleteUserById/{id}")
+    @DeleteMapping ("/deleteById/{id}")
     public void deleteUserById(@PathVariable Long id){
         userService.delete(id);
     }
@@ -58,6 +58,4 @@ public class UserController {
     public List<Match> getMatches(@PathVariable Long userId){
         return userService.getMatchByUsrId(userId);
     }
-
-
 }

@@ -6,8 +6,6 @@ import com.ctw.ffn131330.match.payload.CreateMatchPayload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-
 @Service
 public class MatchService extends BaseService<Match> {
 
@@ -19,18 +17,9 @@ public class MatchService extends BaseService<Match> {
         return repository;
     }
 
-    public Boolean dummy(Match m){
-        return m.getGameType().rules(1);
-    }
-
-
     public Match createMatch(CreateMatchPayload newMatch) {
         Match match = new Match(newMatch);
         return repository.save(match);
     }
 
-
-    public Match getMatchById(long matchId) {
-        return repository.findById(matchId).<RuntimeException>orElseThrow(() -> new RuntimeException("Match not found!"));
-    }
 }

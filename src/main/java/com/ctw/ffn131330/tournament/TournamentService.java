@@ -15,4 +15,10 @@ public class TournamentService extends BaseService <Tournament> {
     public BaseRepository<Tournament> getRepository() {
         return repository;
     }
+
+    public Tournament createTournament() {
+        // TODO{create tournament}
+        return null;
+    }
+
 }

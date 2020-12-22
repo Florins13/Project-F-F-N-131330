@@ -15,8 +15,8 @@ public abstract class BaseService <T extends BaseEntity> {
         return this.getRepository().save(entity);
     }
 
-    public T get(Long id){
-        return this.getRepository().findById(id).orElse(null);
+    public T getById(Long id){
+        return this.getRepository().findById(id).<RuntimeException>orElseThrow(() -> new RuntimeException("Entity not found!"));
     }
 
     @Transactional

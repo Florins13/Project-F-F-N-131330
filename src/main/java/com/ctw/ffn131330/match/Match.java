@@ -11,7 +11,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
@@ -24,8 +23,7 @@ public class Match extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private GameType gameType;
 
-    @ManyToOne
-    private User winner;
+    private Integer numberWinnerTeam;
 
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
     private List<ScoreStats> scoresStats = new ArrayList<>();
@@ -37,11 +35,6 @@ public class Match extends BaseEntity {
 
     private Integer scoreTeamOne;
     private Integer scoreTeamTwo;
-
-
-    public Match(GameType gameType) {
-        this.gameType = gameType;
-    }
 
     public Match() {
     }
@@ -76,14 +69,6 @@ public class Match extends BaseEntity {
         this.gameType = gameType;
     }
 
-    public User getWinner() {
-        return winner;
-    }
-
-    public void setWinner(User winner) {
-        this.winner = winner;
-    }
-
     public List<ScoreStats> getScoresStats() {
         return scoresStats;
     }
@@ -106,5 +91,29 @@ public class Match extends BaseEntity {
 
     public void setMatchStatus(MatchStatus matchStatus) {
         this.matchStatus = matchStatus;
+    }
+
+    public Integer getScoreTeamOne() {
+        return scoreTeamOne;
+    }
+
+    public void setScoreTeamOne(Integer scoreTeamOne) {
+        this.scoreTeamOne = scoreTeamOne;
+    }
+
+    public Integer getScoreTeamTwo() {
+        return scoreTeamTwo;
+    }
+
+    public void setScoreTeamTwo(Integer scoreTeamTwo) {
+        this.scoreTeamTwo = scoreTeamTwo;
+    }
+
+    public Integer getNumberWinnerTeam() {
+        return numberWinnerTeam;
+    }
+
+    public void setNumberWinnerTeam(Integer numberWinnerTeam) {
+        this.numberWinnerTeam = numberWinnerTeam;
     }
 }

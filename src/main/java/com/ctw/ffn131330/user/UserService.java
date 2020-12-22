@@ -31,13 +31,13 @@ public class UserService extends BaseService <User> {
         return repository;
     }
 
-    public User checkUserNameNotNull(User usr) throws Exception {
+/*    public User checkUserNameNotNull(User usr) throws Exception {
 
         if(usr.getName().isEmpty()){
             throw new Exception(usr.getName());
         }
         return usr;
-    }
+    }*/
 
     public User check5chars(User usr) {
         if(usr.getName().length() < 5){
@@ -85,4 +85,5 @@ public class UserService extends BaseService <User> {
         // Basically the predicate means the condition after where, like in our case we check where user = "our argument"
         // then we use the criteriaQuery to select (c.get(this will return our match) where (our predicate, CONDITION)
     };
+
 }

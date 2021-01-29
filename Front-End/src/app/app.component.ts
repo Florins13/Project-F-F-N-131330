@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Front-End';
+  public numero : number = 0;
+
+
+  buttonClick() : void {
+    this.numero++;
+  }
 }

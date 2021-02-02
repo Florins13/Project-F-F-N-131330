@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {Users} from "../hero";
+import {HeroService} from "../services/hero.service";
 
 @Component({
   selector: 'app-practice',
@@ -7,12 +9,38 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PracticeComponent implements OnInit {
 
-  @Input() test : number = 0;
+  @Input()
+  name : string = "jansdflsdmnfsdkflk";
+  users : Users[] = [];
 
-  constructor() { }
+  constructor(
+    private heroService: HeroService,) { }
+
+  hero: Users = {
+    id: 1,
+    title: 'Windstorm',
+    body: "20",
+    userId: 1
+  };
+
+  HEROES: string[] = [
+    "Dr Nice",
+    "Dr Nice1",
+    "Dr Nice2",
+    "Dr Nice3"
+  ];
 
   ngOnInit(): void {
-    this.test = 0;
+    this.name = "init"
+  }
+
+  getStuff(): void {
+    this.heroService.getHeroes().subscribe(heroes =>
+    {
+      this.users = heroes
+      console.log(this.users)
+    });
+
   }
 
 

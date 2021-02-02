@@ -1,5 +1,12 @@
-<div class="blueBorder">
+<div class="blueBorder" xmlns="http://www.w3.org/1999/html">
 
-  <span>Times clicked: {{ test }}</span>
-  <button (click)="buttonClick()">Counter!</button>
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="name" placeholder="name" (change)="getStuff()"/>
+    </label>
+  </div>
+  <span>{{name}}</span>
+
+  <li *ngFor="let hero of HEROES">{{hero}}</li>
 </div>

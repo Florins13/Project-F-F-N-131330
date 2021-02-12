@@ -14,7 +14,7 @@ export class HeroService {
     private http: HttpClient
   ) { }
 
-  getHeroes(): Observable<Users[]> {
-    return this.http.get<Users[]>(this.Url)
+  getHeroes(): Observable<any[]> {
+    return this.http.get<any[]>(this.Url)
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-blue-comp',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlueCompComponent implements OnInit {
 
+  @Input()
+  public testNum : number = 0;
+
+  @Output()
+  public numeroOut : number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  increaseNumber() : void {
+    this.numeroOut = this.testNum++;
+  }
 }

@@ -10,11 +10,21 @@ export class HeroService {
 
   private Url = 'https://jsonplaceholder.typicode.com/posts';  // URL to web api
 
+  public number : number = 0;
+
   constructor(
     private http: HttpClient
   ) { }
 
   getHeroes(): Observable<any[]> {
     return this.http.get<any[]>(this.Url)
+  }
+
+  readValue(): number {
+    return this.number;
+  }
+
+  increaseNumber(): number {
+    return ++this.number;
   }
 }

@@ -21,7 +21,6 @@ import { BlueCompComponent } from './blue-comp/blue-comp.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

@@ -4,9 +4,9 @@
     height: 900px;
     align-items: center; ">
 
-
-  <app-red-comp [testNum]="numero"></app-red-comp>
-  <app-blue-comp [testNum]="numero"></app-blue-comp>
+  <div>{{state}}</div>
+  <app-red-comp [numberReceived]="state" (newItemEvent)="getNumberFromRed($event)"></app-red-comp>
+  <app-blue-comp [numberReceived]="state" (newItemEvent)="getNumberFromBlue($event)"></app-blue-comp>
 
 
 </div>

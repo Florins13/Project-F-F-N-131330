@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-blue-comp',
@@ -8,10 +8,9 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 export class BlueCompComponent implements OnInit {
 
   @Input()
-  public testNum : number = 0;
+  public numberReceived : number = 0;
 
-  @Output()
-  public numeroOut : number = 0;
+  @Output() newItemEvent = new EventEmitter<number>();
 
   constructor() { }
 
@@ -19,6 +18,7 @@ export class BlueCompComponent implements OnInit {
   }
 
   increaseNumber() : void {
-    this.numeroOut = this.testNum++;
+    this.numberReceived = this.numberReceived + 1;
+    this.newItemEvent.emit(this.numberReceived);
   }
 }

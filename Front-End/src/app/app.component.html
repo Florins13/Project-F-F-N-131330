@@ -5,7 +5,7 @@
     align-items: center; ">
 
   <div>{{state}}</div>
-  <app-red-comp [numberReceived]="state" (newItemEvent)="getNumberFromRed($event)"></app-red-comp>
+  <router-outlet></router-outlet>
   <app-blue-comp [numberReceived]="state" (newItemEvent)="getNumberFromBlue($event)"></app-blue-comp>
 
 

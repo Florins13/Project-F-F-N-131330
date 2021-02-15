@@ -19,6 +19,6 @@ export class BlueCompComponent implements OnInit {
 
   increaseNumber() : void {
     this.numberReceived = this.numberReceived + 1;
-    this.newItemEvent.emit(this.numberReceived);
+    this.newItemEvent.emit(2);
   }
 }

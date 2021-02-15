@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeroService } from "./services/hero.service";
 import { RedCompComponent } from './red-comp/red-comp.component';
 import { BlueCompComponent } from './blue-comp/blue-comp.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { BlueCompComponent } from './blue-comp/blue-comp.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

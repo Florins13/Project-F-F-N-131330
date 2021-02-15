@@ -4,10 +4,21 @@
     height: 900px;
     align-items: center; ">
 
-  <div>{{state}}</div>
-  <router-outlet></router-outlet>
-  <app-blue-comp [numberReceived]="state" (newItemEvent)="getNumberFromBlue($event)"></app-blue-comp>
+  <nav>
+    <div style="
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-between;
+width: 500px;">
 
+      <a routerLink="red">Red Component</a>
+      <a routerLink="blue">blue Component</a>
+      <a routerLink="">index</a>
+      <a routerLink="wrong">Wrong url</a>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
 
 </div>
 

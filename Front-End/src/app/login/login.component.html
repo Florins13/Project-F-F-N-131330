@@ -1,1 +1,11 @@
-<p>login works!</p>
+<div class="formClass fontTextStyle">
+  <img src="assets/CTWlogo.png" class="responsive selfAlign"/>
+
+  <input class="labelsMargin" placeholder="Username" [formControl]="name">
+
+  <input class="labelsMargin" type="text" placeholder="Password">
+  <span class="forgotPassword">Forgot Password</span>
+
+  <button class="labelsMargin" (click)="requestLogIn()">Log in</button>
+  <label class="createAccount labelsMargin selfAlign">Create account</label>
+</div>

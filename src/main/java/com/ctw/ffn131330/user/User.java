@@ -14,6 +14,18 @@ public class User extends BaseEntity {
     @NonNull
     private String name;
 
+    @NonNull
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(@NonNull String userName) {
+        this.userName = userName;
+    }
+
+    @NonNull
+    private String userName;
+
     private boolean userActive;
 
     @OneToMany(mappedBy = "user")

@@ -55,15 +55,19 @@ public class UserService extends BaseService <User> {
     public void saveDefault() {
         User a = new User();
         a.setName("fatih");
+        a.setUserName("fatihM");
         a.setUserActive(true);
         User b = new User();
         b.setName("nuno");
+        b.setUserName("nunoR");
         b.setUserActive(true);
         User c = new User();
         c.setName("johny");
+        c.setUserName("johnyB");
         c.setUserActive(true);
         User d = new User();
         d.setName("florin");
+        d.setUserName("florinS");
         d.setUserActive(true);
 
         repository.saveAll(Arrays.asList(a,b,c,d));
@@ -84,6 +88,10 @@ public class UserService extends BaseService <User> {
 
         // Basically the predicate means the condition after where, like in our case we check where user = "our argument"
         // then we use the criteriaQuery to select (c.get(this will return our match) where (our predicate, CONDITION)
+    };
+
+    public User getUserByUserName(String username) {
+        return repository.findByUserName(username);
     };
 
 }

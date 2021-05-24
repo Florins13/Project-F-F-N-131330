@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping ("/")
+    @GetMapping ("")
     public String getIndex(){
         return "Welcome to Side project!";
     }

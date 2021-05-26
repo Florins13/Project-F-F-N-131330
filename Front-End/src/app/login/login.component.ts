@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+import {LoginService} from "./login.service";
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,25 @@ import { FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  name = new FormControl('');
+  loginForm = this.fb.group({
+    name: ['',Validators.required],
+    password: ['',Validators.required]
+  });
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private loginService : LoginService) {
+  }
 
   ngOnInit(): void {
   }
 
-  requestLogIn() {
-    this.name.setValue('Nuno');
+  onAttemptLogin() {
+    // TODO: Use EventEmitter with form value
+    if(!this.loginForm.value.name || !this.loginForm.value.password){
+      alert("Fields are missing");
+      return;
+    }
+    console.log(this.loginForm.value);
+    this.loginService.getUserFromLogin( {"username":this.loginForm.value, "password": this.loginForm.value.password});
   }
+
 }

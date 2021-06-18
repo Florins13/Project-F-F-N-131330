@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 import {LoginService} from "./login.service";
 
 @Component({
@@ -10,7 +10,7 @@ import {LoginService} from "./login.service";
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-    name: ['',Validators.required],
+    username: ['',Validators.required],
     password: ['',Validators.required]
   });
 
@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
 
   onAttemptLogin() {
     // TODO: Use EventEmitter with form value
-    if(!this.loginForm.value.name || !this.loginForm.value.password){
+    if(!this.loginForm.value.username || !this.loginForm.value.password){
       alert("Fields are missing");
       return;
     }
     console.log(this.loginForm.value);
-    this.loginService.getUserFromLogin( {"username":this.loginForm.value.username, "password": this.loginForm.value.password});
+    this.loginService.getUserFromLogin( this.loginForm.value);
   }
 
 }

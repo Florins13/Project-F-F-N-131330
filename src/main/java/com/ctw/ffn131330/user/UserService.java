@@ -3,9 +3,14 @@ package com.ctw.ffn131330.user;
 import com.ctw.ffn131330.base.BaseRepository;
 import com.ctw.ffn131330.base.BaseService;
 import com.ctw.ffn131330.exceptions.GenericException;
+import com.ctw.ffn131330.login.Login;
 import com.ctw.ffn131330.match.Match;
 import com.ctw.ffn131330.scoreStats.ScoreStats;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -18,7 +23,11 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class UserService extends BaseService <User> {
+public class UserService extends BaseService <User> implements UserDetailsService {
+
+    private final static String USER_NOT_FOUND = "username %s not found!";
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository repository;
@@ -56,19 +65,17 @@ public class UserService extends BaseService <User> {
         User a = new User();
         a.setName("fatih");
         a.setUserName("fatihM");
-        a.setUserActive(true);
         User b = new User();
         b.setName("nuno");
         b.setUserName("nunoR");
-        b.setUserActive(true);
         User c = new User();
         c.setName("johny");
         c.setUserName("johnyB");
-        c.setUserActive(true);
+        c.setPassword(passwordEncoder.encode("randomPassword"));
+        c.setUserRole(UserRole.ADMIN);
         User d = new User();
         d.setName("florin");
         d.setUserName("florinS");
-        d.setUserActive(true);
 
         repository.saveAll(Arrays.asList(a,b,c,d));
     }
@@ -91,7 +98,20 @@ public class UserService extends BaseService <User> {
     };
 
     public User getUserByUserName(String username) {
-        return repository.findByUserName(username);
+        return repository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
     };
 
+    public User checkPassword(Login loginCredentials) throws Exception {
+        if(passwordEncoder.matches(loginCredentials.getPassword(),repository.findByUserName(loginCredentials.getPassword()).get().getPassword())){
+            return repository.findByUserName(loginCredentials.getUsername()).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, loginCredentials.getUsername())));
+        }
+        else{
+            throw new GenericException.UserExceptions("password not correct");
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
+    }
 }

@@ -25,15 +25,15 @@ public class LoginController {
         return loginService.getUserFromLogin(login);
     }
 
-    @GetMapping("/test")
-    public String login(Principal principal) throws Exception {
-        System.out.println(principal);
-        return principal.getName();
-    }
-
-    @GetMapping("/test2")
-    public Object getContextUser(@RequestBody Login login){
-        final Object contextUser = SecurityContextHolder.getContext().getAuthentication();
-        return contextUser;
-    }
+//    @GetMapping("/test")
+//    public String login(Principal principal) throws Exception {
+//        System.out.println(principal);
+//        return principal.getName();
+//    }
+//
+//    @GetMapping("/test2")
+//    public Object getContextUser(@RequestBody Login login){
+//        final Object contextUser = SecurityContextHolder.getContext().getAuthentication();
+//        return contextUser;
+//    }
 }

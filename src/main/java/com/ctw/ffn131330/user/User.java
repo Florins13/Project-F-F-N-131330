@@ -23,8 +23,8 @@ public class User extends BaseEntity  implements UserDetails {
 
     @NonNull
     private String userName;
-
     private String password;
+    private String email;
     private Boolean locked = false;
     private Boolean enabled = false;
 
@@ -37,12 +37,10 @@ public class User extends BaseEntity  implements UserDetails {
     public User() {
     }
 
-    public User(@NonNull String name, @NonNull String userName, String password, Boolean locked, Boolean enabled, UserRole userRole) {
-        this.name = name;
+    public User(@NonNull String userName, String password, String email, UserRole userRole) {
         this.userName = userName;
         this.password = password;
-        this.locked = locked;
-        this.enabled = enabled;
+        this.email = email;
         this.userRole = userRole;
     }
 
@@ -92,6 +90,14 @@ public class User extends BaseEntity  implements UserDetails {
 
     public User(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

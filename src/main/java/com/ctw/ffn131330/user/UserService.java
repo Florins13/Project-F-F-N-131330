@@ -23,34 +23,26 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class UserService extends BaseService <User> implements UserDetailsService {
+public class UserService extends BaseService<User> implements UserDetailsService {
 
     private final static String USER_NOT_FOUND = "username %s not found!";
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     public BaseRepository<User> getRepository() {
-        return repository;
+        return userRepository;
     }
-
-/*    public User checkUserNameNotNull(User usr) throws Exception {
-
-        if(usr.getName().isEmpty()){
-            throw new Exception(usr.getName());
-        }
-        return usr;
-    }*/
 
     public User check5chars(User usr) {
         if(usr.getName().length() < 5){
-            return repository.save(usr);
+            return userRepository.save(usr);
         }
         else if (usr.getName().length() < 6){
             throw new GenericException.UserExceptions("USer lower then 5 char");
@@ -77,7 +69,7 @@ public class UserService extends BaseService <User> implements UserDetailsServic
         d.setName("florin");
         d.setUserName("florinS");
 
-        repository.saveAll(Arrays.asList(a,b,c,d));
+        userRepository.saveAll(Arrays.asList(a,b,c,d));
     }
 
     public List<Match> getMatchByUsrId(Long userId){
@@ -98,12 +90,12 @@ public class UserService extends BaseService <User> implements UserDetailsServic
     };
 
     public User getUserByUserName(String username) {
-        return repository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
+        return userRepository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
     };
 
     public User checkPassword(Login loginCredentials) throws Exception {
-        if(passwordEncoder.matches(loginCredentials.getPassword(),repository.findByUserName(loginCredentials.getPassword()).get().getPassword())){
-            return repository.findByUserName(loginCredentials.getUsername()).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, loginCredentials.getUsername())));
+        if(passwordEncoder.matches(loginCredentials.getPassword(), userRepository.findByUserName(loginCredentials.getUsername()).get().getPassword())){
+            return userRepository.findByUserName(loginCredentials.getUsername()).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, loginCredentials.getUsername())));
         }
         else{
             throw new GenericException.UserExceptions("password not correct");
@@ -112,6 +104,15 @@ public class UserService extends BaseService <User> implements UserDetailsServic
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
+        return userRepository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
+    }
+
+    public void singUpUser(User user){
+        // TODO: here we should check for username maybe as well.
+        boolean userExists = userRepository.findByEmail(user.getEmail()).isPresent();
+        if(userExists) throw new IllegalStateException("email already exists");
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
+        userRepository.save(user);
     }
 }

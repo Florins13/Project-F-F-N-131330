@@ -11,22 +11,28 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Entity
-public class User extends BaseEntity  implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
 
-    @NonNull
+    @NotNull
     private String name;
 
-    @NonNull
+    @NotNull
     private String userName;
+
+    @NotNull
     private String password;
+
+    @NotNull
     private String email;
+
     private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean enabled = true;
 
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -37,7 +43,8 @@ public class User extends BaseEntity  implements UserDetails {
     public User() {
     }
 
-    public User(@NonNull String userName, String password, String email, UserRole userRole) {
+    public User(String name, String userName, String password, String email, UserRole userRole) {
+        this.name = name;
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -75,7 +82,7 @@ public class User extends BaseEntity  implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !this.locked;
     }
 
     @Override
@@ -85,7 +92,7 @@ public class User extends BaseEntity  implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.enabled;
     }
 
     public User(String name) {
@@ -112,4 +119,7 @@ public class User extends BaseEntity  implements UserDetails {
         this.password = password;
     }
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
 }

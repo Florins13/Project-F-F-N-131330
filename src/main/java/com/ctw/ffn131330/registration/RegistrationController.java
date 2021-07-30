@@ -15,7 +15,7 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping("")
-    public String register(@RequestBody RegistrationRequest req){
+    public String register(@RequestBody RegistrationRequest req) throws Exception {
         registrationService.register(req);
         return "worked";
     }

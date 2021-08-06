@@ -1,4 +1,68 @@
-
+@import "src/styles.sass"
 .login
   display: flex
   justify-content: center
+
+
+.fontTextStyle > *
+  font-family: "Questrial"
+  font-style: normal
+  font-weight: normal
+  letter-spacing: 0.03em
+  line-height: 124.5%
+
+.formClass
+  display: flex
+  flex-direction: column
+  height: 75vh
+  justify-content: center
+
+.responsive
+  width: 100%
+  max-width: 200px
+  height: auto
+  margin-bottom: 35px
+
+.labelsMargin
+  margin-top: clamp(8px,6vh,30px)
+
+.selfAlign
+  align-self: center
+
+input
+  border-color: $Navy-Blue
+  border-top-style: hidden
+  border-right-style: hidden
+  border-left-style: hidden
+  text-align: center
+  line-height: 124.5%
+  font-size: 24px
+
+input:focus
+  outline: none
+  border-color: #137AA0
+
+.forgotPassword
+  color: $CG-Blue
+  align-self: flex-end
+  font-size: 17px
+  text-shadow: 0px 2px 4px rgb(0 0 0 / 25%)
+  margin-top: 0.3em
+
+button
+  align-self: center
+  font-size: 24px
+  background-color: $Navy-Blue
+  color: $White
+  height: 40px
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+  border-radius: 4px
+  border-color: transparent
+  &:hover
+    background-color: $White
+    color: $Navy-Blue
+
+.createAccount
+  font-size: 24px
+  color: $CG-Blue
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)

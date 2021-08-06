@@ -1,4 +1,4 @@
-
+<div class="login">
 <form [formGroup]="loginForm" (ngSubmit)="onAttemptLogin()">
   <div class="formClass fontTextStyle">
     <img src="assets/CTWlogo.png" class="responsive selfAlign"/>
@@ -9,9 +9,11 @@
     <span class="forgotPassword">Forgot Password</span>
     <button class="labelsMargin" type="submit" >Log in</button>
 
-    <label class="createAccount labelsMargin selfAlign">Create account</label>
+    <label class="createAccount labelsMargin selfAlign"><a routerLink="/register" routerLinkActive="active">Create account</a></label>
+
 <!--    <p>
       Form Status: {{ loginForm.status }}
     </p>-->
   </div>
 </form>
+</div>

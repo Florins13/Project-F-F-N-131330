@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, Subscription} from "rxjs";
+import {Injectable} from '@angular/core';
+import {HttpClient,} from '@angular/common/http';
+import {Subscription} from "rxjs";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class LoginService {
 
   getUserFromLogin(params : any): Subscription {
 
-    return this.http.post<any>("http://localhost:8200/login", params).subscribe(data => {
+    return this.http.post<any>(environment.apiUrl + "/login", params).subscribe(data => {
       console.log(data);
     })
   }

@@ -19,7 +19,6 @@ import java.util.List;
 @Entity
 public class User extends BaseEntity implements UserDetails {
 
-    @NotNull
     private String name;
 
     @NotNull
@@ -31,8 +30,8 @@ public class User extends BaseEntity implements UserDetails {
     @NotNull
     private String email;
 
-    private Boolean locked = false;
-    private Boolean enabled = true;
+    private final Boolean locked = false;
+    private final Boolean enabled = true;
 
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -43,8 +42,7 @@ public class User extends BaseEntity implements UserDetails {
     public User() {
     }
 
-    public User(String name, String userName, String password, String email, UserRole userRole) {
-        this.name = name;
+    public User(String userName, String password, String email, UserRole userRole) {
         this.userName = userName;
         this.password = password;
         this.email = email;

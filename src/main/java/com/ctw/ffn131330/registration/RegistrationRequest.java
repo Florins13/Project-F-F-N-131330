@@ -1,24 +1,14 @@
 package com.ctw.ffn131330.registration;
 
 public class RegistrationRequest {
-    private String name;
     private String username;
     private String password;
     private String email;
 
-    public RegistrationRequest(String userName, String password, String email, String name) {
-        this.name = name;
+    public RegistrationRequest(String userName, String password, String email) {
         this.username = userName;
         this.password = password;
         this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setUsername(String username) {

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       alert("Fields are missing");
       return;
     }
-    console.log(this.loginForm.value);
+
     this.loginService.getUserFromLogin( this.loginForm.value);
   }
 

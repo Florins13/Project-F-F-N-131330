@@ -4,8 +4,14 @@
     <img src="assets/CTWlogo.png" class="responsive selfAlign"/>
 
     <input class="labelsMargin" type="text" placeholder="Username" formControlName="username" required>
+    <div *ngIf="f.username.touched && f.username.invalid" style="color: red">
+      <div *ngIf="f.username.errors!.required">Username is required.</div>
+    </div>
 
-    <input class="labelsMargin" type="text" placeholder="Password" formControlName="password" required>
+    <input class="labelsMargin" type="password" placeholder="Password" formControlName="password" required>
+    <div *ngIf="f.password.touched && f.password.invalid" style="color: red">
+      <div *ngIf="f.password.errors!.required">Password is required.</div>
+    </div>
     <span class="forgotPassword">Forgot Password</span>
     <button class="labelsMargin" type="submit" >Log in</button>
 

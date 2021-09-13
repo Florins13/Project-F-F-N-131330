@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get f(){
+    return this.loginForm.controls;
+  }
+
   onAttemptLogin() {
     // TODO: Use EventEmitter with form value
     if(!this.loginForm.value.username || !this.loginForm.value.password){

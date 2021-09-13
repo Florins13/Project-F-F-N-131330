@@ -3,25 +3,25 @@
   <div class="formClass fontTextStyle">
     <img src="assets/CTWlogo.png" class="responsive selfAlign"/>
 
-    <input class="labelsMargin" type="text" placeholder="Username" formControlName="username" >
+    <input class="labelsMargin" type="text" placeholder="Username" formControlName="username" required>
     <div *ngIf="f.username.touched && f.username.invalid" style="color: red">
-      <div *ngIf="f.username.errors.required">Username is required.</div>
+      <div *ngIf="f.username.errors!.required">Username is required.</div>
     </div>
 
-    <input class="labelsMargin" type="text" placeholder="Email" formControlName="email">
+    <input class="labelsMargin" type="text" placeholder="Email" formControlName="email" required>
     <div *ngIf="f.email.touched && f.email.invalid" style="color: red">
-      <div *ngIf="f.email.errors.required">Email is required.</div>
+      <div *ngIf="f.email.errors!.required">Email is required.</div>
     </div>
 
-    <input class="labelsMargin" type="password" placeholder="Password" formControlName="password" >
+    <input class="labelsMargin" type="password" placeholder="Password" formControlName="password" required>
     <div *ngIf="f.password.touched && f.password.invalid" style="color: red">
-      <div *ngIf="f.password.errors.required">Password is required.</div>
+      <div *ngIf="f.password.errors!.required">Password is required.</div>
     </div>
 
-    <input class="labelsMargin" type="password"  placeholder="Repeat password" formControlName="confirmPassword" >
+    <input class="labelsMargin" type="password"  placeholder="Repeat password" formControlName="confirmPassword" required>
     <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" style="color: red">
-      <div *ngIf="f.confirmPassword.errors.required">Confirm password is required.</div>
-      <div *ngIf="f.confirmPassword.errors.confirmedValidator">Password must match.</div>
+      <div *ngIf="f.confirmPassword.errors!.required">Confirm password is required.</div>
+      <div *ngIf="f.confirmPassword.errors!.confirmedValidator">Password must match.</div>
     </div>
 
     <button class="labelsMargin" type="submit" >Create account</button>

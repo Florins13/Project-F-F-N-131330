@@ -1,6 +1,5 @@
 package com.ctw.ffn131330.exceptions;
 
-import com.sun.jmx.snmp.Timestamp;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,13 +7,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @ControllerAdvice
 class GlobalDefaultExceptionHandler {
     private ExceptionObj buildExceptionObj(HttpServletRequest req, Exception ex) {
         ExceptionObj expObj = new ExceptionObj();
         expObj.setMessage(ex.getMessage());
-        expObj.setTimestamp(new Timestamp(System.currentTimeMillis()).getDate());
+        expObj.setTimestamp(new Date(System.currentTimeMillis()));
         expObj.setUrl(req.getRequestURL().toString());
         expObj.setExceptionType(ex.getClass().getSimpleName());
         return expObj;

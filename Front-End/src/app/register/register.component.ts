@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "./register.service";
 
 @Component({
@@ -16,13 +16,13 @@ export class RegisterComponent implements OnInit {
     email: ['',Validators.required]
   }, {validator: this.ConfirmedValidator('password', 'confirmPassword')
   });
-  constructor(private fb: FormBuilder, private registerService : RegisterService) { }
+  constructor(private fb: UntypedFormBuilder, private registerService : RegisterService) { }
 
   ngOnInit(): void {
   }
 
   ConfirmedValidator(password: string, confirmPassword : string){
-    return (formGroup : FormGroup) => {
+    return (formGroup : UntypedFormGroup) => {
       const pass = formGroup.controls[password];
       const confirmPass = formGroup.controls[confirmPassword];
       if(confirmPass.errors && !confirmPass.errors.confirmedValidator) {

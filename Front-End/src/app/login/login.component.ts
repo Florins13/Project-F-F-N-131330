@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {LoginService} from "./login.service";
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: ['',Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private loginService : LoginService) {
+  constructor(private fb: UntypedFormBuilder, private loginService : LoginService) {
   }
 
   ngOnInit(): void {

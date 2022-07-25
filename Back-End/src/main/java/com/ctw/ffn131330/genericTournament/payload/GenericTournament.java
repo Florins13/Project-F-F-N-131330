@@ -1,30 +1,36 @@
 package com.ctw.ffn131330.genericTournament.payload;
 
 import com.ctw.ffn131330.game.GameType;
-import org.springframework.lang.NonNull;
 
 import java.util.List;
 
 public class GenericTournament {
 
-    @NonNull
-    private List<GenericPlayer> listOfPlayers;
+    private List<String> listOfPlayers;
 
-    @NonNull
     private GameType gameType;
 
     public GenericTournament(){}
-    public GenericTournament(@NonNull List<GenericPlayer> playersName, @NonNull GameType gameType) {
+    public GenericTournament(List<String> playersName, GameType gameType) {
         this.listOfPlayers = playersName;
         this.gameType = gameType;
     }
 
-    @NonNull
-    public List<GenericPlayer> getListOfPlayers() {
+
+    public List<String> getListOfPlayers() {
         return listOfPlayers;
     }
 
-    public void setListOfPlayers(@NonNull List<GenericPlayer> listOfPlayers) {
+    public void setListOfPlayers(List<String> listOfPlayers) {
         this.listOfPlayers = listOfPlayers;
+    }
+
+
+    public GameType getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
     }
 }

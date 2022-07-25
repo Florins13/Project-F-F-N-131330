@@ -13,4 +13,16 @@ public class GenerateTournament extends BaseEntity {
     @OneToMany
     private List<GenericMatch> matches;
 
+
+
 }
+
+
+// --> 4  ----------- A vs B, C vs D,         Z vs F, R vs S
+//     2  ----------- A vs C                  Z vs R
+
+
+
+// Player [ {A vs B}, {C vs D}, {Z vs F}, {R vs S}]
+
+// A vs D, F vs R

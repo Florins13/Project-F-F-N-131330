@@ -1,46 +1,48 @@
-{
-    "numberOfPlayers": 8,
-    "playersName": ["Nuno", "Players 2", "Players 3","Players 4","Players 5","Players 6","Players 7","Players 8"]
-}
-
-{
-    "id": 1234,
-    "initialMatches": 4,
-    "matches": [
-        {
-            "matchNunber": 1,
-            "playerOne": "Nuno",
-            "playerTwo": "Players 6",
-            // "winner": ""
-        },
-        {
-            "matchNunber": 2,
-            "playerOne": "Players 3",
-            "playerTwo": "Players 7",
-            // "winner": ""
-        },
-        {
-            "matchNunber": 3,
-            "playerOne": "Nuno",
-            "playerTwo": "Players 6",
-            // "winner": ""
-        },
-        {
-            "matchNunber": 4,
-            "playerOne": "Nuno",
-            "playerTwo": "Players 6",
-            // "winner": ""
-        }
-    ]
-}
-
-{
-    "id": 1234,
-    "matcheNumber": 1,
-    "winner": "Nuno" 
-}
-
-//
-
-
-
+///* For players endpoint FRONTNED-> BACKEND */
+//{
+//    "playersName": [
+//        "Nuno",
+//        "Players 2",
+//        "Players 3",
+//        "Players 4",
+//        "Players 5",
+//        "Players 6",
+//        "Players 7",
+//        "Players 8"
+//    ]
+//}
+///* For players endpoint FRONTNED-> BACKEND */
+//{
+//    "teams": [
+//        "Team A",
+//        "Team B",
+//        "Team C",
+//        "Team D"
+//    ]
+//}
+///* SinglePlayer - > Step 2 BKACNED -> FRONTEND */
+//{
+//    "initialMatches": 4,
+//    "matches": [
+//        1: {
+//            "matchNumber": 1,
+//            "playerOne": "Nuno",
+//            "playerTwo": "Player 2"
+//        },
+//        2: {
+//            "matchNumber": 2,
+//            "playerOne": "Players 3",
+//            "playerTwo": "Player 4"
+//        },
+//        3: {
+//            "matchNumber": 3,
+//            "playerOne": "Players 5",
+//            "playerTwo": "Player 6"
+//        },
+//        4: {
+//            "matchNumber": 4,
+//            "playerOne": "Players 7",
+//            "playerTwo": "Player 8"
+//        }
+//    ]
+//}

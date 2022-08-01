@@ -1,7 +1,7 @@
 package com.ctw.ffn131330.genericTournament;
 
 import com.ctw.ffn131330.genericTournament.payload.GenerateTournament;
-import com.ctw.ffn131330.genericTournament.payload.GenericTournament;
+import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +16,8 @@ public class GenericTournamentController {
     GenericTournamentService genericTournamentService;
 
 
-    @PostMapping("/create")
-    public GenerateTournament createMatch(@RequestBody GenericTournament genericTournament) {
-        return genericTournamentService.createObject(genericTournament);
+    @PostMapping("/createSinglePlayers")
+    public GenerateTournament createMatch(@RequestBody GenericTournamentDTO genericTournamentDTO) {
+        return genericTournamentService.createTournament(genericTournamentDTO);
     }
 }

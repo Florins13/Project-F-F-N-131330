@@ -1,20 +1,54 @@
 package com.ctw.ffn131330.genericTournament.payload;
 
 import com.ctw.ffn131330.base.BaseEntity;
+import com.ctw.ffn131330.game.GameType;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Entity
 public class GenerateTournament extends BaseEntity {
     private Integer initialMatches;
 
     @OneToMany
-    private List<GenericMatch> matches;
+    private Map<Integer, GenericMatch> tournament = new TreeMap<>();
 
+    GameType gameType;
 
+    public GenerateTournament() {
+    }
 
+    public GenerateTournament(Integer initialMatches, TreeMap<Integer, GenericMatch> tournament, GameType gameType) {
+        this.initialMatches = initialMatches;
+        this.tournament = tournament;
+        this.gameType = gameType;
+    }
+
+    public Integer getInitialMatches() {
+        return initialMatches;
+    }
+
+    public void setInitialMatches(Integer initialMatches) {
+        this.initialMatches = initialMatches;
+    }
+
+    public Map<Integer, GenericMatch> getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Map<Integer, GenericMatch> tournament) {
+        this.tournament = tournament;
+    }
+
+    public GameType getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
+    }
 }
 
 

@@ -4,14 +4,14 @@ import com.ctw.ffn131330.game.GameType;
 
 import java.util.List;
 
-public class GenericTournament {
+public class GenericTournamentDTO {
 
     private List<String> listOfPlayers;
 
     private GameType gameType;
 
-    public GenericTournament(){}
-    public GenericTournament(List<String> playersName, GameType gameType) {
+    public GenericTournamentDTO(){}
+    public GenericTournamentDTO(List<String> playersName, GameType gameType) {
         this.listOfPlayers = playersName;
         this.gameType = gameType;
     }

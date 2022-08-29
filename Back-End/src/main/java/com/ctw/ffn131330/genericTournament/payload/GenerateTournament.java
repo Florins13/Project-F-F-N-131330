@@ -20,8 +20,7 @@ public class GenerateTournament extends BaseEntity {
     public GenerateTournament() {
     }
 
-    public GenerateTournament(Integer initialMatches, TreeMap<Integer, GenericMatch> tournament, GameType gameType) {
-        this.initialMatches = initialMatches;
+    public GenerateTournament(TreeMap<Integer, GenericMatch> tournament, GameType gameType) {
         this.tournament = tournament;
         this.gameType = gameType;
     }

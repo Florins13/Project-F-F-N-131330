@@ -3,8 +3,7 @@ package com.ctw.ffn131330.genericTournament.payload;
 import com.ctw.ffn131330.base.BaseEntity;
 import com.ctw.ffn131330.game.GameType;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -12,9 +11,14 @@ import java.util.TreeMap;
 public class GenerateTournament extends BaseEntity {
     private Integer initialMatches;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tournament_map_matches",
+            joinColumns = {@JoinColumn(name = "generic_tournament_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "generic_match_id", referencedColumnName = "id")})
+    @MapKey
     private Map<Integer, GenericMatch> tournament = new TreeMap<>();
 
+    @Enumerated(EnumType.STRING)
     GameType gameType;
 
     public GenerateTournament() {

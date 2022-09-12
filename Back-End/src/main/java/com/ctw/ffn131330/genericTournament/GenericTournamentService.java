@@ -14,10 +14,10 @@ import java.util.Collections;
 public class GenericTournamentService extends BaseService<GenerateTournament> {
 
     @Autowired
-    GenericTournamentRepository repository;
+    GenericTournamentRepository genericTournamentRepository;
     @Override
     public BaseRepository<GenerateTournament> getRepository() {
-        return repository;
+        return genericTournamentRepository;
     }
 
     public GenerateTournament createTournament(GenericTournamentDTO genericTournamentDTO) {
@@ -37,6 +37,7 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
             String playerTwo = genericTournamentDTO.getListOfPlayers().size()-1 < i*2+1 ? null : genericTournamentDTO.getListOfPlayers().get((i*2)+1);
             generateTournament.getTournament().put(i+1, new GenericMatch(i+1, playerOne, playerTwo));
         }
+        genericTournamentRepository.save(generateTournament);
         return generateTournament;
     }
 }

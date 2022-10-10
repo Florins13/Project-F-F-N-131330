@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   //todo{ create 'cannot find this page' component)
-  //{ path: '**', component: LoginComponent}
+  { path: '**', component: LoginComponent}
 ];
 
 @NgModule({

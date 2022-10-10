@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {RegisterService} from "./register.service";
+import {RegisterService} from "./services/register.service";
 
 @Component({
   selector: 'app-register',

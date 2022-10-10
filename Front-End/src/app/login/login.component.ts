@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {LoginService} from "./login.service";
+import {LoginService} from "./services/login.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getUserFromLogin( this.loginForm.value).subscribe((userInfo)=>{
 
-      sessionStorage.user = userInfo;
+      localStorage.isAuthenticated = userInfo.authenticated;
       this.router.navigate(['/home'])
     })
   }

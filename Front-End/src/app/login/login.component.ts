@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginService.getUserFromLogin( this.loginForm.value).subscribe((userInfo)=>{
 
       localStorage.isAuthenticated = userInfo.authenticated;
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home/main'])
     })
   }
 

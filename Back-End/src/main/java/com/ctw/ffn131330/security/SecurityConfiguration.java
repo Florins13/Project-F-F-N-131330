@@ -34,8 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").permitAll()
                 .anyRequest()
                 .authenticated()
-                .and().httpBasic();
-                //.formLogin(); this if you want the nice login prompt
+                .and().httpBasic()
+                ;//.and().formLogin(); //this if you want the nice login prompt
     }
 
     @Override

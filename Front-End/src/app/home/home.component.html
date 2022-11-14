@@ -1,8 +1,11 @@
-<div style = "display:grid ; grid-template-columns: 1fr 4fr">
+<div class="main_grid">
 
 
-  <div style = "grid-column-start: 1; grid-column-end: 2">Menu</div>
+    <app-header class="header"></app-header>
 
+    <app-nav class="nav-menu"></app-nav>
 
-  <div style = "grid-column-start: 2; grid-column-end: 5">home page</div>
+    <div class="main"><router-outlet></router-outlet></div>
+
+    <footer class="item-footer" >footer</footer>
 </div>

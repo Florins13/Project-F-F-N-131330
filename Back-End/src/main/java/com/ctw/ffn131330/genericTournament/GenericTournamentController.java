@@ -3,6 +3,7 @@ package com.ctw.ffn131330.genericTournament;
 import com.ctw.ffn131330.game.GameType;
 import com.ctw.ffn131330.genericTournament.payload.GenerateTournament;
 import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
+import com.ctw.ffn131330.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,6 @@ public class GenericTournamentController {
         list.add(genericTournamentService.createTournament(dto));
 
         return list;
+        //return genericTournamentService.getAll();
     }
 }

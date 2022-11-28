@@ -1,1 +1,4 @@
-<p>{{tournament$ | async }}</p>
+<p *ngFor="let tournament of (tournament$ | async)">
+  <span> {{tournament['gameType']}}
+  </span>
+</p>

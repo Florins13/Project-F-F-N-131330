@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
   constructor(private store : StoreService) { }
 
   ngOnInit(): void {
-    this.tournament$.subscribe(item => console.log(item));
+
   }
 
 }

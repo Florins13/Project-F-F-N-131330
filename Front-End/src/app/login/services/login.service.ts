@@ -17,7 +17,7 @@ export class LoginService {
         'Authorization': 'Basic ' + btoa(params.username + ":" + params.password)
       })
     };
-    return this.http.post<any>(environment.apiUrl + "/login", httpOptions);
+    return this.http.post<any>(environment.apiUrl + "/login", params, httpOptions);
 
   }
 }

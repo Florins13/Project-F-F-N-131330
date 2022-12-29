@@ -37,6 +37,12 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
             String playerTwo = genericTournamentDTO.getListOfPlayers().size()-1 < i*2+1 ? null : genericTournamentDTO.getListOfPlayers().get((i*2)+1);
             generateTournament.getTournament().put(i+1, new GenericMatch(i+1, playerOne, playerTwo));
         }
+        for(int j = 0; j < generateTournament.getInitialMatches()/2 +1; j++){
+            String playerOne = "TBD";
+            String playerTwo = "TBD";
+            generateTournament.getTournament().put(j+1 + 4, new GenericMatch(j+1, playerOne, playerTwo));
+        }
+
         genericTournamentRepository.save(generateTournament);
         return generateTournament;
     }

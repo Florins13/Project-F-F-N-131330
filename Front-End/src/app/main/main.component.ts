@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {StoreService} from "../store/store.service";
+import {Observable} from "rxjs";
+import {Tournament} from "./models/Tournament";
+
 
 @Component({
   selector: 'app-main',
@@ -9,7 +12,7 @@ import {StoreService} from "../store/store.service";
 })
 export class MainComponent implements OnInit {
 
-  tournament$ = this.store.tournament$;
+  tournaments$: Observable<Tournament[]> = this.store.tournaments$;
 
   constructor(private store : StoreService) { }
 
@@ -17,4 +20,9 @@ export class MainComponent implements OnInit {
 
   }
 
+  getInicialMatches(tmn : Tournament) {
+    tmn.initialMatches
+
+
+  }
 }

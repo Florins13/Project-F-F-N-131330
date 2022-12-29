@@ -11,6 +11,7 @@ import {RegisterComponent} from "./register/register.component";
 import { NavComponent } from './nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+import { MatchBoxComponent } from './match-box/match-box.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MainComponent } from './main/main.component';
     RegisterComponent,
     NavComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    MatchBoxComponent
   ],
   imports: [
     BrowserModule,

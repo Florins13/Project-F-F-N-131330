@@ -1,4 +1,8 @@
-<p *ngFor="let tournament of (tournament$ | async)">
-  <span> {{tournament['gameType']}}
-  </span>
-</p>
+<ng-container *ngIf="tournaments$ | async as tournaments">
+  <div *ngFor="let tnm of tournaments">
+    <div>{{tnm.id}}</div>
+    <div *ngFor="let game of tnm.tournament | keyvalue">
+        <app-match-box style="width: 100px" [game]="game.value"></app-match-box>
+    </div>
+  </div>
+</ng-container>

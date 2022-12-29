@@ -27,13 +27,13 @@ public class GenericTournamentController {
     @GetMapping("/getAllTournaments")
     public List<GenerateTournament> getTournaments() {
 
-        List<GenerateTournament> list = new ArrayList<>();
+        //List<GenerateTournament> list = new ArrayList<>();
 
-        GenericTournamentDTO dto = new GenericTournamentDTO(Arrays.asList("nuno", "Florin", "player3", "player4", "player5"), GameType.PING_PONG);
+        //GenericTournamentDTO dto = new GenericTournamentDTO(Arrays.asList("nuno", "Florin", "player3", "player4", "player5", "3","7","8"), GameType.PING_PONG);
 
-        list.add(genericTournamentService.createTournament(dto));
+        //list.add(genericTournamentService.createTournament(dto));
 
-        return list;
-        //return genericTournamentService.getAll();
+        //return list;
+        return genericTournamentService.getAll();
     }
 }

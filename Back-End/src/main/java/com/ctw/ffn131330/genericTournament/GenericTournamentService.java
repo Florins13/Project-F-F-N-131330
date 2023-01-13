@@ -4,7 +4,7 @@ import com.ctw.ffn131330.base.BaseRepository;
 import com.ctw.ffn131330.base.BaseService;
 import com.ctw.ffn131330.genericTournament.payload.GenerateTournament;
 import com.ctw.ffn131330.genericTournament.payload.GenericMatch;
-import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
+import com.ctw.ffn131330.genericTournament.payload.CreateGenericTournamentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,27 +20,31 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
         return genericTournamentRepository;
     }
 
-    public GenerateTournament createTournament(GenericTournamentDTO genericTournamentDTO) {
-        Collections.shuffle(genericTournamentDTO.getListOfPlayers());
-        System.out.println("Shuffled" + genericTournamentDTO.getListOfPlayers());
+    public GenerateTournament createTournament(CreateGenericTournamentDTO createGenericTournamentDTO) {
+        Collections.shuffle(createGenericTournamentDTO.getListOfPlayers());
+        System.out.println("Shuffled" + createGenericTournamentDTO.getListOfPlayers());
 
         GenerateTournament generateTournament = new GenerateTournament();
-        generateTournament.setGameType(genericTournamentDTO.getGameType());
-        generateTournament.setInitialMatches(genericTournamentDTO.getListOfPlayers().size()%2 == 0 ? genericTournamentDTO.getListOfPlayers().size()/2 : (int) Math.ceil(genericTournamentDTO.getListOfPlayers().size() / 2.0));
+        generateTournament.setGameType(createGenericTournamentDTO.getGameType());
+        generateTournament.setInitialMatches(createGenericTournamentDTO.getListOfPlayers().size()%2 == 0 ? createGenericTournamentDTO.getListOfPlayers().size()/2 : (int) Math.ceil(createGenericTournamentDTO.getListOfPlayers().size() / 2.0));
 
-        // iterate genericTournamentDTO.getListOfPlayers()
-        // even players --- get 0 -> 1 , 2 -> 3 , 4 -> 5 ---> 2*index - 2*index+1
-        // odd players --- 7 players -> listOfPlayers.size-1(because index starts at 0) < 7 ? null : player
-        // [1,2,3,4,5,6,7]
-        for(int i = 0; i < generateTournament.getInitialMatches(); i++){
-            String playerOne = genericTournamentDTO.getListOfPlayers().get(i*2); // this will start from 2 if we do i = 1, better to stay at 0
-            String playerTwo = genericTournamentDTO.getListOfPlayers().size()-1 < i*2+1 ? null : genericTournamentDTO.getListOfPlayers().get((i*2)+1);
-            generateTournament.getTournament().put(i+1, new GenericMatch(i+1, playerOne, playerTwo));
-        }
-        for(int j = 0; j < generateTournament.getInitialMatches()/2 +1; j++){
-            String playerOne = "TBD";
-            String playerTwo = "TBD";
-            generateTournament.getTournament().put(j+1 + 4, new GenericMatch(j+1, playerOne, playerTwo));
+
+        Integer phases = generateTournament.getTournamentNumberPhases();
+
+
+        for(int i = phases-1; i >= 0; i--){ // we want to loop 4 phases, 0,1,2,3 not 5 times 0,1,2,3,4
+            for(int j = 0; j < (Math.pow(2,i)); j++){ // ex: 2 at power of 3 = 8 which is initial number of matches
+                if(phases-1 == i){ //we want only the first phase/loop and the rest is TBD's
+                    String playerOne = createGenericTournamentDTO.getListOfPlayers().get(j*2); // this will start from 2 if we do i = 1, better to stay at 0
+                    String playerTwo = createGenericTournamentDTO.getListOfPlayers().size()-1 < j*2+1 ? null : createGenericTournamentDTO.getListOfPlayers().get((j*2)+1);
+                    generateTournament.getMatches().add(new GenericMatch(j+1, playerOne, playerTwo));
+                }
+                else {
+                    String playerOne = "TBD";
+                    String playerTwo = "TBD";
+                    generateTournament.getMatches().add( new GenericMatch(j+1, playerOne, playerTwo));
+                }
+            }
         }
 
         genericTournamentRepository.save(generateTournament);

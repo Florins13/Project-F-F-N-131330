@@ -4,19 +4,19 @@ import com.ctw.ffn131330.base.BaseEntity;
 import com.ctw.ffn131330.game.GameType;
 
 import javax.persistence.*;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class GenerateTournament extends BaseEntity {
     private Integer initialMatches;
 
-    @OneToMany(cascade = CascadeType.ALL)
+
     @JoinTable(name = "tournament_map_matches",
             joinColumns = {@JoinColumn(name = "generic_tournament_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "generic_match_id", referencedColumnName = "id")})
-    @MapKey
-    private Map<Integer, GenericMatch> tournament = new TreeMap<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<GenericMatch> matches = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     GameType gameType;
@@ -24,8 +24,8 @@ public class GenerateTournament extends BaseEntity {
     public GenerateTournament() {
     }
 
-    public GenerateTournament(TreeMap<Integer, GenericMatch> tournament, GameType gameType) {
-        this.tournament = tournament;
+    public GenerateTournament(List<GenericMatch> matches, GameType gameType) {
+        this.matches = matches;
         this.gameType = gameType;
     }
 
@@ -33,16 +33,21 @@ public class GenerateTournament extends BaseEntity {
         return initialMatches;
     }
 
+    //TODO: this works only for happy cases, to do in future for other cases like 10 players
+    public Integer getTournamentNumberPhases(){
+        return (int) (Math.log(this.initialMatches*2)/Math.log(2));
+    }
+
     public void setInitialMatches(Integer initialMatches) {
         this.initialMatches = initialMatches;
     }
 
-    public Map<Integer, GenericMatch> getTournament() {
-        return tournament;
+    public List<GenericMatch> getMatches() {
+        return matches;
     }
 
-    public void setTournament(Map<Integer, GenericMatch> tournament) {
-        this.tournament = tournament;
+    public void setMatches(List<GenericMatch> tournament) {
+        this.matches = tournament;
     }
 
     public GameType getGameType() {

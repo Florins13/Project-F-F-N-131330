@@ -1,4 +1,4 @@
-package com.ctw.ffn131330.genericTournament.payload;
+package com.ctw.ffn131330.genericTournament;
 
 import com.ctw.ffn131330.base.BaseEntity;
 

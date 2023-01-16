@@ -2,13 +2,14 @@ package com.ctw.ffn131330.genericTournament;
 
 import com.ctw.ffn131330.base.BaseRepository;
 import com.ctw.ffn131330.base.BaseService;
-import com.ctw.ffn131330.genericTournament.payload.GenerateTournament;
-import com.ctw.ffn131330.genericTournament.payload.GenericMatch;
 import com.ctw.ffn131330.genericTournament.payload.CreateGenericTournamentDTO;
+import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GenericTournamentService extends BaseService<GenerateTournament> {
@@ -50,4 +51,10 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
         genericTournamentRepository.save(generateTournament);
         return generateTournament;
     }
+
+    public List<GenericTournamentDTO> getAllGenericTournaments(){
+        return this.genericTournamentRepository.findAll().stream().map(item-> new GenericTournamentDTO(item)).collect(Collectors.toList());
+    };
+
+
 }

@@ -1,7 +1,7 @@
 package com.ctw.ffn131330.genericTournament;
 
-import com.ctw.ffn131330.genericTournament.payload.GenerateTournament;
 import com.ctw.ffn131330.genericTournament.payload.CreateGenericTournamentDTO;
+import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,16 +22,8 @@ public class GenericTournamentController {
     }
 
     @GetMapping("/getAllTournaments")
-    public List<GenerateTournament> getTournaments() {
-
-        //List<GenerateTournament> list = new ArrayList<>();
-
-        //GenericTournamentDTO dto = new GenericTournamentDTO(Arrays.asList("nuno", "Florin", "player3", "player4", "player5", "3","7","8"), GameType.PING_PONG);
-
-        //list.add(genericTournamentService.createTournament(dto));
-
-        //return list;
-        return genericTournamentService.getAll();
+    public List<GenericTournamentDTO> getTournaments() {
+        return genericTournamentService.getAllGenericTournaments();
     }
 
     @GetMapping("/cenas")

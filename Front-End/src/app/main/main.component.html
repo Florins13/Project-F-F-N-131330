@@ -1,8 +1,7 @@
 <ng-container *ngIf="tournaments$ | async as tournaments">
-  <div *ngFor="let tnm of tournaments">
-    <div>{{tnm.id}}</div>
-    <div *ngFor="let game of tnm.tournament | keyvalue">
-        <app-match-box style="width: 100px" [game]="game.value"></app-match-box>
+  <div class="tournament" *ngFor="let tnm of tournaments">
+    <div *ngFor="let phase of tnm.matches">
+        <app-phase class="phase" [phase]="phase"></app-phase>
     </div>
   </div>
 </ng-container>

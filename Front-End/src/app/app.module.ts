@@ -12,6 +12,7 @@ import { NavComponent } from './nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { MatchBoxComponent } from './match-box/match-box.component';
+import { PhaseComponent } from './phase/phase.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatchBoxComponent } from './match-box/match-box.component';
     NavComponent,
     HeaderComponent,
     MainComponent,
-    MatchBoxComponent
+    MatchBoxComponent,
+    PhaseComponent
   ],
   imports: [
     BrowserModule,

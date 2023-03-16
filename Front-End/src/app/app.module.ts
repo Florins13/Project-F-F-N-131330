@@ -3,16 +3,17 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import { NavComponent } from './nav/nav.component';
 import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
+import { ViewComponent } from './view/view.component';
 import { MatchBoxComponent } from './match-box/match-box.component';
 import { PhaseComponent } from './phase/phase.component';
+import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,17 @@ import { PhaseComponent } from './phase/phase.component';
     RegisterComponent,
     NavComponent,
     HeaderComponent,
-    MainComponent,
+    ViewComponent,
     MatchBoxComponent,
-    PhaseComponent
+    PhaseComponent,
+    NewTournamentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

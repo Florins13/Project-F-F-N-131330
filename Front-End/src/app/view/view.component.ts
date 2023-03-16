@@ -5,12 +5,12 @@ import {Tournament} from "./models/Tournament";
 
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.sass'],
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnInit {
+export class ViewComponent implements OnInit {
 
   tournaments$: Observable<Tournament[]> = this.store.tournaments$;
 

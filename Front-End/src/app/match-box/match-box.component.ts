@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {GenericMatch} from "../main/models/GenericMatch";
+import {GenericMatch} from "../view/models/GenericMatch";
 
 @Component({
   selector: 'app-match-box',

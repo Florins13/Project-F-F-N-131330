@@ -7,7 +7,7 @@ import {Tournament} from "../models/Tournament";
 @Injectable({
   providedIn: 'root'
 })
-export class MainService {
+export class ViewService {
 
   constructor(private http: HttpClient) { }
 

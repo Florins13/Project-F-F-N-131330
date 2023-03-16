@@ -4,7 +4,8 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {HomeComponent} from "./home/home.component";
 import {AuthGuard} from "./auth/auth.guard";
-import {MainComponent} from "./main/main.component";
+import {ViewComponent} from "./view/view.component";
+import {NewTournamentComponent} from "./new-tournament/new-tournament.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -12,20 +13,20 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard],
     children: [
       {
-        path: 'main',  // child route path
-        component: MainComponent,  // child route component that the router renders
+        path: 'new-tournament',  // child route path
+        component: NewTournamentComponent,  // child route component that the router renders
       },
       {
-        path: 'nav2',  // child route path
-        component: MainComponent,  // child route component that the router renders
+        path: 'view',  // child route path
+        component: ViewComponent,  // child route component that the router renders
       },
       {
         path: 'nav3',  // child route path
-        component: MainComponent,  // child route component that the router renders
+        component: ViewComponent,  // child route component that the router renders
       },
       {
         path: 'nav4',  // child route path
-        component: MainComponent,  // child route component that the router renders
+        component: ViewComponent,  // child route component that the router renders
       }
       /*{
         path: 'child-b',

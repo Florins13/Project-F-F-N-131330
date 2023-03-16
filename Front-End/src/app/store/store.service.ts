@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {MainService} from "../main/services/main.service";
+import {ViewService} from "../view/services/view.service";
 import {Observable} from "rxjs";
-import {Tournament} from "../main/models/Tournament";
+import {Tournament} from "../view/models/Tournament";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  constructor(private mainService : MainService) { }
+  constructor(private mainService : ViewService) { }
 
 
   tournaments$: Observable<Tournament[]> = this.mainService.getTournaments();

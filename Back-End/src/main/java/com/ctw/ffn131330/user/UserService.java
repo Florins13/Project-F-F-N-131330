@@ -101,11 +101,11 @@ public class UserService extends BaseService<User> implements UserDetailsService
         }
     }
 
-    public UserAuthDetails getAuthenticatedUser(Login loginCredentials) throws Exception {
+    public UserAuthDetails getAuthenticatedUser(Login loginCredentials, String token) throws Exception {
         User user = checkPassword(loginCredentials.getUsername(), loginCredentials.getPassword());
         UserAuthDetails userAuthDetails = new UserAuthDetails(
                 user,
-                SecurityContextHolder.getContext().getAuthentication().isAuthenticated());
+                SecurityContextHolder.getContext().getAuthentication().isAuthenticated(), token);
         return userAuthDetails;
     }
 

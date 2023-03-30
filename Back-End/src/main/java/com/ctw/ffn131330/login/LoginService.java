@@ -10,7 +10,7 @@ public class LoginService {
     @Autowired
     UserService userService;
 
-    public UserAuthDetails getUserFromLogin(Login login) throws Exception {
-          return userService.getAuthenticatedUser(login);
+    public UserAuthDetails getUserFromLogin(Login login, String token) throws Exception {
+          return userService.getAuthenticatedUser(login,token);
     }
 }

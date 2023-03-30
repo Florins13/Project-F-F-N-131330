@@ -15,20 +15,28 @@ public class UserAuthDetails {
     private Boolean isAuthenticated;
     private Boolean isEnabled;
 
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public UserAuthDetails(String name, String username, UserRole userRole, Boolean isAuthenticated, Boolean isEnabled) {
         this.name = name;
         this.username = username;
         this.userRole = userRole;
         this.isAuthenticated = isAuthenticated;
         this.isEnabled = isEnabled;
+
     }
 
-    public UserAuthDetails(User user, Boolean isAuthenticated) {
-        this.name = user.getName();
-        this.username = user.getUsername();
-        this.userRole = user.getUserRole();
-        this.isAuthenticated = isAuthenticated;
-        this.isEnabled = user.isEnabled();
+    public UserAuthDetails(User user, Boolean isAuthenticated, String token) {
+        this(user.getName(), user.getUsername(), user.getUserRole(), isAuthenticated, user.isEnabled());
+        this.token = token;
     }
 
     public String getName() {

@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/genericTournament/createSinglePlayers").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().httpBasic()

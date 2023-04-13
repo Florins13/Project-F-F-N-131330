@@ -1,5 +1,6 @@
 package com.ctw.ffn131330.security;
 
+import com.ctw.ffn131330.security.jwt.JwtTokenFilter;
 import com.ctw.ffn131330.user.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -20,11 +22,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
 
-//    private final JwTokenFilter jwTokenFilter;
+    private final JwtTokenFilter jwtTokenFilter;
 
-    public SecurityConfiguration(BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService) {
+    public SecurityConfiguration(BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService, JwtTokenFilter jwTokenFilter) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userService = userService;
+        this.jwtTokenFilter = jwTokenFilter;
     }
 
 
@@ -39,9 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").permitAll()
                 .anyRequest()
                 .authenticated()
-                .and().httpBasic()
                 ;//.and().formLogin(); //this if you want the nice login prompt
+
+        httpSecurity.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class );
     }
+
+
+
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

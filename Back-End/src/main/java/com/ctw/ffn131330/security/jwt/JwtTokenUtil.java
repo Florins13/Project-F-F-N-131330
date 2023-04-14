@@ -23,7 +23,7 @@ public class JwtTokenUtil implements Serializable {
     public static final String SIGNING_KEY = "sideproject123fromcenastocenaswillgowellandanothercenasto250bits";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
-    public static final String ISSUER = "http://sideproject.wow";
+    public static final String ISSUER = "https://sideproject.com";
 
 
     public String getUsernameFromToken(String token) {

@@ -10,7 +10,7 @@ import {NewTournamentService} from "./services/new-tournament.service";
 })
 export class NewTournamentComponent implements OnInit {
 
-  cgt :CreateGenericTournament = {gameType: "POOL", listOfPlayers: []};
+  cgt :CreateGenericTournament = {gameType: "POOL", listOfPlayers: ["Nuno", "Andre", "Florin", "Francisco", "Tiago"]};
   player: string = "";
   constructor(private newTournamentService : NewTournamentService) { }
 
@@ -23,6 +23,6 @@ export class NewTournamentComponent implements OnInit {
   }
 
   createTournament() {
-    this.newTournamentService.createTournament(this.cgt);
+    this.newTournamentService.createTournament(this.cgt).subscribe();
   }
 }

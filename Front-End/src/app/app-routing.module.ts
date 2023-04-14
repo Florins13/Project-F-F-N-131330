@@ -14,6 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: 'new-tournament',  // child route path
+        title: 'New-Tournament',
         component: NewTournamentComponent,  // child route component that the router renders
       },
       {

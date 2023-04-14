@@ -12,12 +12,7 @@ export class ViewService {
   constructor(private http: HttpClient) { }
 
   getTournaments(): Observable<Tournament[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Basic ' + btoa("nuno:red")
-      })
-    };
-    return this.http.get<Tournament[]>(environment.apiUrl + "/genericTournament/getAllTournaments", httpOptions);
+
+    return this.http.get<Tournament[]>(environment.apiUrl + "/genericTournament/getAllTournaments");
   }
 }

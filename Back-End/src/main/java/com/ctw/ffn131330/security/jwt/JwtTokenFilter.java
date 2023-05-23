@@ -14,7 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.hibernate.annotations.common.util.StringHelper.isEmpty;
 
@@ -24,6 +26,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     private final JwtTokenUtil jwtTokenUtil;
     private final UserService userService;
 
+    private final List<String> skipValidation = Arrays.asList("/registration", "/login");
+
     public JwtTokenFilter(JwtTokenUtil jwtTokenUtil, UserService userService) {
         this.jwtTokenUtil = jwtTokenUtil;
         this.userService = userService;
@@ -32,7 +36,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (isEmpty(header) || !header.startsWith("Bearer ")) {
+
+        if(skipValidation.contains(request.getRequestURI()) || isEmpty(header) || !header.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }

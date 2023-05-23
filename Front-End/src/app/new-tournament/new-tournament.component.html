@@ -5,4 +5,17 @@
     <p>{{p}}</p>
   </div>
   <button (click)="createTournament()">Create</button>
+
+
+
+  <div class="tournament"  >
+    <ng-container *ngFor="let match of newTournament.matches">
+      <app-match-box [game]="match"></app-match-box>
+    </ng-container>
+  </div>
+
+
+
+
 </div>
+

@@ -8,7 +8,7 @@
 
 
 
-  <div class="tournament"  >
+  <div class="tournament" *ngIf="newTournament" >
     <ng-container *ngFor="let match of newTournament.matches">
       <app-match-box [game]="match"></app-match-box>
     </ng-container>

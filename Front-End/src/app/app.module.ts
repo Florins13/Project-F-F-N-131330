@@ -15,6 +15,8 @@ import { MatchBoxComponent } from './match-box/match-box.component';
 import { PhaseComponent } from './phase/phase.component';
 import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 import {AuthInterceptor} from "./auth/auth-interceptor";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -34,8 +36,9 @@ import {AuthInterceptor} from "./auth/auth-interceptor";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
-  ],
+    FormsModule,
+    MatExpansionModule,
+    BrowserAnimationsModule ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

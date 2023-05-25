@@ -13,6 +13,7 @@ import {Tournament} from "./models/Tournament";
 export class ViewComponent implements OnInit {
 
   tournaments$: Observable<Tournament[]> = this.store.tournaments$;
+  step: number = 0;
 
   constructor(private store : StoreService) { }
 
@@ -24,5 +25,17 @@ export class ViewComponent implements OnInit {
     tmn.initialMatches
 
 
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }

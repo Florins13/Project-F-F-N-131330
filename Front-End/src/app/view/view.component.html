@@ -1,7 +1,7 @@
 <ng-container *ngIf="tournaments$ | async as tournaments">
   <div class="tournament" *ngFor="let tnm of tournaments; let index=index;">
     <mat-accordion >
-      <mat-expansion-panel [expanded]="step === index"  (opened)="setStep(index)">
+      <mat-expansion-panel [expanded]="step === index" (opened)="setStep(index)">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Tournament number: {{index +1}}
@@ -18,6 +18,7 @@
             </ng-container>
           </div>
         <mat-action-row>
+          <button (click)="onUpdateTournament(tnm)">Update</button>
           <button *ngIf="index > 0" mat-button color="warn" (click)="prevStep()">Previous</button>
           <button *ngIf="index < tournaments.length -1" mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>

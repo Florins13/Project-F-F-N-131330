@@ -3,4 +3,7 @@ export interface GenericMatch{
   matchNumber: number;
   playerOne: string;
   playerTwo: string;
+  resultOne: number;
+  resultTwo: number;
+
 }

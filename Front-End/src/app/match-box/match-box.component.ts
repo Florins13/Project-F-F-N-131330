@@ -7,10 +7,8 @@ import {GenericMatch} from "../view/models/GenericMatch";
   styleUrls: ['./match-box.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatchBoxComponent implements OnInit {
+export class MatchBoxComponent implements OnInit{
   @Input() game!: GenericMatch;
-  playerOneResult : number = 0;
-  playerTwoResult : number = 1;
 
   constructor() { }
 

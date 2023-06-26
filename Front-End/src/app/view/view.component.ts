@@ -3,7 +3,6 @@ import {StoreService} from "../store/store.service";
 import {Observable} from "rxjs";
 import {Tournament} from "./models/Tournament";
 
-
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -21,8 +20,8 @@ export class ViewComponent implements OnInit {
 
   }
 
-  getInicialMatches(tmn : Tournament) {
-    tmn.initialMatches
+  getInicialMatches(tnm : Tournament) {
+    tnm.initialMatches
 
 
   }
@@ -37,5 +36,16 @@ export class ViewComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+
+  onUpdateTournament(tnm : Tournament) {
+    console.log(this.isThereAnyInvalidMatch(tnm));
+  }
+
+  private isThereAnyInvalidMatch(tnm: Tournament) {
+    return tnm.matches.some(phase => phase.some(game =>
+        (game.resultOne >= 0 && !game.resultTwo) ||
+        (!game.resultOne && game.resultTwo >= 0)
+      ));
   }
 }

@@ -18,7 +18,7 @@
             </ng-container>
           </div>
         <mat-action-row>
-          <button (click)="onUpdateTournament(tnm)">Update</button>
+          <button (click)="onUpdateTournament(tnm)"><a routerLink= '{{"/home/editTournament/" + tnm.id}}'>Update</a></button>
           <button *ngIf="index > 0" mat-button color="warn" (click)="prevStep()">Previous</button>
           <button *ngIf="index < tournaments.length -1" mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>

@@ -10,13 +10,18 @@ public class GenericMatch extends BaseEntity {
     private String playerOne;
     private String playerTwo;
 
+    private Integer resultOne;
+    private Integer resultTwo;
+
     public GenericMatch() {
     }
 
-    public GenericMatch(int matchNumber, String playerOne, String playerTwo) {
+    public GenericMatch(int matchNumber, String playerOne, String playerTwo, Integer resultOne, Integer resultTwo) {
         this.matchNumber = matchNumber;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.resultOne = resultOne;
+        this.resultTwo = resultTwo;
     }
 
     public int getMatchNumber() {

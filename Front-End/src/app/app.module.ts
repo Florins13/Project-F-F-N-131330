@@ -17,6 +17,7 @@ import { NewTournamentComponent } from './new-tournament/new-tournament.componen
 import {AuthInterceptor} from "./auth/auth-interceptor";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EditTournamentComponent } from './edit-tournament/edit-tournament.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ViewComponent,
     MatchBoxComponent,
     PhaseComponent,
-    NewTournamentComponent
+    NewTournamentComponent,
+    EditTournamentComponent
   ],
   imports: [
     BrowserModule,

@@ -38,12 +38,10 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
                 if(phases-1 == i){ //we want only the first phase/loop and the rest is TBD's
                     String playerOne = createGenericTournamentDTO.getListOfPlayers().get(j*2); // this will start from 2 if we do i = 1, better to stay at 0
                     String playerTwo = createGenericTournamentDTO.getListOfPlayers().size()-1 < j*2+1 ? null : createGenericTournamentDTO.getListOfPlayers().get((j*2)+1);
-                    generateTournament.getMatches().add(new GenericMatch(j+1, playerOne, playerTwo));
+                    generateTournament.getMatches().add(new GenericMatch(j+1, playerOne, playerTwo, null, null));
                 }
                 else {
-                    String playerOne = "TBD";
-                    String playerTwo = "TBD";
-                    generateTournament.getMatches().add( new GenericMatch(j+1, playerOne, playerTwo));
+                    generateTournament.getMatches().add( new GenericMatch(j+1, null, null, null, null));
                 }
             }
         }

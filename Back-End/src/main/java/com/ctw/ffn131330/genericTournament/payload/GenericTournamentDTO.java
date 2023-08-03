@@ -3,6 +3,7 @@ package com.ctw.ffn131330.genericTournament.payload;
 import com.ctw.ffn131330.game.GameType;
 import com.ctw.ffn131330.genericTournament.GenerateTournament;
 import com.ctw.ffn131330.genericTournament.GenericMatch;
+import com.ctw.ffn131330.genericTournament.PhasesDTO;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +16,8 @@ public class GenericTournamentDTO {
     private Integer totalMatches;
 
     private Long id;
+
+    private PhasesDTO phasesDTO;
 
     private List<List<GenericMatch>> matches = new LinkedList<>();
 

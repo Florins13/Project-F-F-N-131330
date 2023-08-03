@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {StoreService} from "../store/store.service";
 import {Observable} from "rxjs";
 import {Tournament} from "./models/Tournament";
+import {GenericMatch} from "./models/GenericMatch";
 
 @Component({
   selector: 'app-view',
@@ -43,9 +44,26 @@ export class ViewComponent implements OnInit {
   }
 
   private isThereAnyInvalidMatch(tnm: Tournament) {
-    return tnm.matches.some(phase => phase.some(game =>
-        (game.resultOne >= 0 && !game.resultTwo) ||
-        (!game.resultOne && game.resultTwo >= 0)
-      ));
+
+    // tnm.matches.forEach(phase => {
+    //   if(this.checkPhaseValidaty(phase)){
+    //     return true;
+    //   }
+    //   else {
+    //     console.log()
+    //   };
+    // }
+    // )
+
+    return false;;
+
+    }
+
+  private checkPhaseValidaty(phase: GenericMatch[]) {
+    return phase.some(game =>
+      (game.resultOne >= 0 && !game.resultTwo) ||
+      (!game.resultOne && game.resultTwo >= 0) || (game.resultOne ? game.resultOne === game.resultTwo : false)
+    );
   }
+
 }

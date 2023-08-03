@@ -12,7 +12,7 @@ import {NewTournament} from "./models/NewTournament";
 })
 export class NewTournamentComponent implements OnInit, OnDestroy {
 
-  cgt : CreateGenericTournament = {gameType: "POOL", listOfPlayers: ["Nuno", "Andre", "Florin", "Francisco", "Tiago"]};
+  cgt : CreateGenericTournament = {gameType: "POOL", listOfPlayers: ["Nuno", "Andre", "Florin", "Francisco", "Tiago", "Ze", "Luis", "Daniel"]};
   player: string = "";
   tournamentSubscription : Subscription | undefined;
   newTournament : NewTournament | undefined;

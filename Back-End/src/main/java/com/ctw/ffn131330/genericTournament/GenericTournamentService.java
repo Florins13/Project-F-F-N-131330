@@ -62,12 +62,24 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
         // dto -> genericTournament -> persist
         // dto -> find the game-> check -> getid -> persist to db
 
+        //
+
+        checkPhaseValidity(tournament.getPhasesDTO().stream().filter(phase -> PhaseStatusEnum.IN_PROGRESS.equals(phase.getStatus())).findFirst().get());
+
         GenerateTournament tournamentEntity = this.getRepository().findById(tournament.getId()).get();
         tournamentEntity.setGameType(tournament.getGameType());
         tournamentEntity.setMatches(tournament.getMatchesAsList());
         tournamentEntity.setInitialMatches(tournament.getInitialMatches());
         GenerateTournament persistedTournament = this.genericTournamentRepository.save(tournamentEntity);
         return new GenericTournamentDTO(persistedTournament);
+    };
+
+    public boolean checkPhaseValidity(PhasesDTO phase){
+        return true;
+    };
+
+    public boolean checkMatchValidity(){
+
     };
 
 

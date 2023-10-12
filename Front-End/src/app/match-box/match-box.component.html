@@ -1,11 +1,11 @@
 <div class="match-box">
   <div class="match-box__results">
     <div style="min-width: 75px">{{game.playerOne ?? "TBD"}}</div>
-    <input [disabled]= "game.complete" class="result-input" type="number" [(ngModel)]="game.resultOne">
+    <input [disabled]= "game.complete" class="result-input" type="number" [(ngModel)]="game.resultOne" (blur) = "checkIsMatchComplete(game)">
   </div>
   <div class="match-box__results">
     <div style="min-width: 75px">{{game.playerTwo ?? "TBD"}}</div>
-    <input [disabled]= "game.complete"  class="result-input" type="number" [(ngModel)]="game.resultTwo">
+    <input [disabled]= "game.complete"  class="result-input" type="number" [(ngModel)]="game.resultTwo" (blur) = "checkIsMatchComplete(game)">
   </div>
 </div>
 

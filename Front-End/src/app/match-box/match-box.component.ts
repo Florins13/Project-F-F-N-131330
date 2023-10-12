@@ -15,4 +15,9 @@ export class MatchBoxComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  
+  checkIsMatchComplete(match: GenericMatch) {
+    match.complete = match.resultOne !== (null && undefined) && match.resultTwo !== (null && undefined);   
+  }
+
 }

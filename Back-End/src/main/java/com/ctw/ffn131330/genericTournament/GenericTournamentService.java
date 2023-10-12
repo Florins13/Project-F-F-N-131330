@@ -74,13 +74,17 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
         return new GenericTournamentDTO(persistedTournament);
     };
 
-    public boolean checkPhaseValidity(PhasesDTO phase){
-        return true;
+    public void checkPhaseValidity(PhasesDTO phase){
+        phase.setStatus(PhaseStatusEnum.DONE);
+        for(GenericMatch match : phase.getMatches()){
+            if(!match.isComplete()){
+                match.setResultOne(null);
+                match.setResultTwo(null);
+                phase.setStatus(PhaseStatusEnum.IN_PROGRESS);
+            };
+        }
     };
 
-    public boolean checkMatchValidity(){
-
-    };
 
 
 }

@@ -37,4 +37,12 @@ public class TournamentController {
     public void deleteTournamentById(@PathVariable long id){
         tournamentService.delete(id);
     }
+
+    @PostMapping("/update")
+    public Tournament createTournament(Tournament tournament) {
+
+        return tournamentService.createTournament();
+    }
+
+
 }

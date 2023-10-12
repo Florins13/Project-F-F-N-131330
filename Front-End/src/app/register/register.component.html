@@ -1,5 +1,6 @@
 <div class="login">
 <form [formGroup]="registerForm" (ngSubmit)="onAttemptRegister()">
+
   <div class="formClass fontTextStyle">
     <img src="assets/CTWlogo.png" class="responsive selfAlign"/>
 
@@ -12,7 +13,6 @@
     <div *ngIf="f.email.touched && f.email.invalid" style="color: red">
       <div *ngIf="f.email.errors!.required">Email is required.</div>
     </div>
-
     <input class="labelsMargin" type="password" placeholder="Password" formControlName="password" required>
     <div *ngIf="f.password.touched && f.password.invalid" style="color: red">
       <div *ngIf="f.password.errors!.required">Password is required.</div>

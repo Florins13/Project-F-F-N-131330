@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "./services/register.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  styleUrls: ['./register.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
 
@@ -43,5 +44,9 @@ export class RegisterComponent implements OnInit {
   onAttemptRegister(){
     this.registerService.registerUser(this.registerForm.value);
   };
+
+  nunoRulls(){
+    console.log("cenas")
+  }
 
 }

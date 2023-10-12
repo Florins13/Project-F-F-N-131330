@@ -11,7 +11,6 @@ import java.util.List;
 public class GenerateTournament extends BaseEntity {
     private Integer initialMatches;
 
-
     @JoinTable(name = "tournament_map_matches",
             joinColumns = {@JoinColumn(name = "generic_tournament_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "generic_match_id", referencedColumnName = "id")})

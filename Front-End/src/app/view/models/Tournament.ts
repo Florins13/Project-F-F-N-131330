@@ -1,10 +1,11 @@
-import {GenericMatch} from "./GenericMatch";
-import {Phase} from "./Phase";
+import { GenericMatch } from "./GenericMatch";
+import { Phase } from "./Phase";
 
 export interface Tournament {
   gameType: string;
   id: number;
   initialMatches: number;
-  matches: [GenericMatch[]];
-  phases: Phase[];
+  matchesAsList: [GenericMatch[]];
+  totalMatches: number;
+  phasesDTO: Phase[];
 }

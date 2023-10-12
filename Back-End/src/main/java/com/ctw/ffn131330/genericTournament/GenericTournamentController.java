@@ -21,9 +21,15 @@ public class GenericTournamentController {
         return genericTournamentService.createTournament(createGenericTournamentDTO);
     }
 
+
     @GetMapping("/getAllTournaments")
     public List<GenericTournamentDTO> getTournaments() {
         return genericTournamentService.getAllGenericTournaments();
+    }
+
+    @PostMapping("/update")
+    public GenericTournamentDTO updateTournament(@RequestBody GenericTournamentDTO tournament) {
+        return genericTournamentService.updateTournament(tournament);
     }
 
     @GetMapping("/cenas")

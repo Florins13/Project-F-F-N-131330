@@ -6,6 +6,7 @@ import com.ctw.ffn131330.genericTournament.payload.CreateGenericTournamentDTO;
 import com.ctw.ffn131330.genericTournament.payload.GenericTournamentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -41,7 +42,7 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
                     generateTournament.getMatches().add(new GenericMatch(j+1, playerOne, playerTwo, null, null));
                 }
                 else {
-                    generateTournament.getMatches().add( new GenericMatch(j+1, null, null, null, null));
+                    generateTournament.getMatches().add( new GenericMatch(j+1, null, null, null, null, false));
                 }
             }
         }
@@ -52,6 +53,21 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
 
     public List<GenericTournamentDTO> getAllGenericTournaments(){
         return this.genericTournamentRepository.findAll().stream().map(item-> new GenericTournamentDTO(item)).collect(Collectors.toList());
+    };
+
+    @Transactional
+    public GenericTournamentDTO updateTournament(GenericTournamentDTO tournament){
+        // find game 1 -> has 2 sc0res -> persist to db.
+        // phases of tournament -> persist when all the games are complete.
+        // dto -> genericTournament -> persist
+        // dto -> find the game-> check -> getid -> persist to db
+
+        GenerateTournament tournamentEntity = this.getRepository().findById(tournament.getId()).get();
+        tournamentEntity.setGameType(tournament.getGameType());
+        tournamentEntity.setMatches(tournament.getMatchesAsList());
+        tournamentEntity.setInitialMatches(tournament.getInitialMatches());
+        GenerateTournament persistedTournament = this.genericTournamentRepository.save(tournamentEntity);
+        return new GenericTournamentDTO(persistedTournament);
     };
 
 

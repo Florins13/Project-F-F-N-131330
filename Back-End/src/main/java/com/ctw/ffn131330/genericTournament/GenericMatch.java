@@ -13,8 +13,28 @@ public class GenericMatch extends BaseEntity {
     private Integer resultOne;
     private Integer resultTwo;
 
+    private boolean complete = false;
+
     public GenericMatch() {
     }
+
+    public Integer getResultOne() {
+        return resultOne;
+    }
+
+    public void setResultOne(Integer resultOne) {
+        this.resultOne = resultOne;
+    }
+
+    public Integer getResultTwo() {
+        return resultTwo;
+    }
+
+    public void setResultTwo(Integer resultTwo) {
+        this.resultTwo = resultTwo;
+    }
+
+
 
     public GenericMatch(int matchNumber, String playerOne, String playerTwo, Integer resultOne, Integer resultTwo) {
         this.matchNumber = matchNumber;
@@ -22,6 +42,11 @@ public class GenericMatch extends BaseEntity {
         this.playerTwo = playerTwo;
         this.resultOne = resultOne;
         this.resultTwo = resultTwo;
+    }
+
+    public GenericMatch(int matchNumber, String playerOne, String playerTwo, Integer resultOne, Integer resultTwo, boolean complete){
+        this(matchNumber, playerOne, playerTwo, resultOne, resultTwo);
+        this.complete = complete;
     }
 
     public int getMatchNumber() {
@@ -48,6 +73,14 @@ public class GenericMatch extends BaseEntity {
 
     public void setPlayerTwo(String playerTwo) {
         this.playerTwo = playerTwo;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
 

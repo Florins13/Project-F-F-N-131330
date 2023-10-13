@@ -35,14 +35,17 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
 
 
         for(int i = phases-1; i >= 0; i--){ // we want to loop 4 phases, 0,1,2,3 not 5 times 0,1,2,3,4
+            generateTournament.getPhases().add(new Phase());
             for(int j = 0; j < (Math.pow(2,i)); j++){ // ex: 2 at power of 3 = 8 which is initial number of matches
                 if(phases-1 == i){ //we want only the first phase/loop and the rest is TBD's
                     String playerOne = createGenericTournamentDTO.getListOfPlayers().get(j*2); // this will start from 2 if we do i = 1, better to stay at 0
                     String playerTwo = createGenericTournamentDTO.getListOfPlayers().size()-1 < j*2+1 ? null : createGenericTournamentDTO.getListOfPlayers().get((j*2)+1);
-                    generateTournament.getMatches().add(new GenericMatch(j+1, playerOne, playerTwo, null, null));
+                    generateTournament.getPhases().get(0).getMatches().add(new GenericMatch(j+1, playerOne, playerTwo, null, null));
+                    generateTournament.getPhases().get(0).setStatus(PhaseStatusEnum.IN_PROGRESS);
                 }
                 else {
-                    generateTournament.getMatches().add( new GenericMatch(j+1, null, null, null, null, false));
+                    generateTournament.getPhases().get(generateTournament.getPhases().size()-1).getMatches().add( new GenericMatch(j+1, null, null, null, null, false));
+                    generateTournament.getPhases().get(generateTournament.getPhases().size()-1).setStatus(PhaseStatusEnum.WAITING);
                 }
             }
         }
@@ -62,19 +65,20 @@ public class GenericTournamentService extends BaseService<GenerateTournament> {
         // dto -> genericTournament -> persist
         // dto -> find the game-> check -> getid -> persist to db
 
-        //
+        checkPhaseValidity(tournament.getPhases().stream().filter(phase -> PhaseStatusEnum.IN_PROGRESS.equals(phase.getStatus())).findFirst().get());
 
-        checkPhaseValidity(tournament.getPhasesDTO().stream().filter(phase -> PhaseStatusEnum.IN_PROGRESS.equals(phase.getStatus())).findFirst().get());
-
+        // check that there are now draw games -> be + fe
+        // if phase is complete, generate the next phase with the winners
+        // if final, do nothing
         GenerateTournament tournamentEntity = this.getRepository().findById(tournament.getId()).get();
         tournamentEntity.setGameType(tournament.getGameType());
-        tournamentEntity.setMatches(tournament.getMatchesAsList());
+        tournamentEntity.setPhases(tournament.getPhases());
         tournamentEntity.setInitialMatches(tournament.getInitialMatches());
         GenerateTournament persistedTournament = this.genericTournamentRepository.save(tournamentEntity);
         return new GenericTournamentDTO(persistedTournament);
     };
 
-    public void checkPhaseValidity(PhasesDTO phase){
+    public void checkPhaseValidity(Phase phase){
         phase.setStatus(PhaseStatusEnum.DONE);
         for(GenericMatch match : phase.getMatches()){
             if(!match.isComplete()){

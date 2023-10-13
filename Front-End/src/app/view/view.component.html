@@ -7,7 +7,7 @@
             Tournament number: {{index +1}}
           </mat-panel-title>
           <mat-panel-description>
-            <ng-container *ngFor="let phase of tnm.phasesDTO">
+            <ng-container *ngFor="let phase of tnm.phases">
               <ng-container *ngFor="let match of phase.matches">
                 <p style="white-space: nowrap"> {{match.playerOne}} VS {{match.playerTwo}} ,</p>
               </ng-container>
@@ -15,7 +15,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
           <div class="tournament" >
-            <ng-container *ngFor="let phase of tnm.phasesDTO">
+            <ng-container *ngFor="let phase of tnm.phases">
                 <app-phase class="phase" [phase]="phase.matches"></app-phase>
             </ng-container>
           </div>

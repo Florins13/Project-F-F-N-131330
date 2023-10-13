@@ -7,5 +7,5 @@ export interface Tournament {
   initialMatches: number;
   matchesAsList: [GenericMatch[]];
   totalMatches: number;
-  phasesDTO: Phase[];
+  phases: Phase[];
 }

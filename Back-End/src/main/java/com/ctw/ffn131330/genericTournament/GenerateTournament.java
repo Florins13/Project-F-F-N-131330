@@ -11,11 +11,11 @@ import java.util.List;
 public class GenerateTournament extends BaseEntity {
     private Integer initialMatches;
 
-    @JoinTable(name = "tournament_map_matches",
+    @JoinTable(name = "tournament_map_phases",
             joinColumns = {@JoinColumn(name = "generic_tournament_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "generic_match_id", referencedColumnName = "id")})
+            inverseJoinColumns = {@JoinColumn(name = "phase_id", referencedColumnName = "id")})
     @OneToMany(cascade = CascadeType.ALL)
-    private List<GenericMatch> matches = new ArrayList<>();
+    private List<Phase> phases = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     GameType gameType;
@@ -23,8 +23,8 @@ public class GenerateTournament extends BaseEntity {
     public GenerateTournament() {
     }
 
-    public GenerateTournament(List<GenericMatch> matches, GameType gameType) {
-        this.matches = matches;
+    public GenerateTournament(List<Phase> phases, GameType gameType) {
+        this.phases = phases;
         this.gameType = gameType;
     }
 
@@ -41,12 +41,12 @@ public class GenerateTournament extends BaseEntity {
         this.initialMatches = initialMatches;
     }
 
-    public List<GenericMatch> getMatches() {
-        return matches;
+    public List<Phase> getPhases() {
+        return phases;
     }
 
-    public void setMatches(List<GenericMatch> tournament) {
-        this.matches = tournament;
+    public void setPhases(List<Phase> tournament) {
+        this.phases = tournament;
     }
 
     public GameType getGameType() {

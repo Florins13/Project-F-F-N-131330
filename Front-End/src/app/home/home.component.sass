@@ -1,0 +1,22 @@
+@import "src/styles.sass"
+
+.main_grid
+  display: grid
+  grid-template-columns: 1fr 5fr
+  grid-template-rows: 20px 20fr 30px
+  grid-template-areas: "nav header" "nav main" "nav footer"
+
+.header
+  grid-area: header
+
+.nav-menu
+  grid-area: nav
+
+.main
+  grid-area: main
+  background-color: $Turquoise
+  padding-left: 50px
+
+.item-footer
+  grid-area: footer
+  background-color: azure

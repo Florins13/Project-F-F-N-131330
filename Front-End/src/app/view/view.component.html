@@ -1,0 +1,7 @@
+<ng-container *ngIf="tournaments$ | async as tournaments">
+  <div class="tournament" *ngFor="let tnm of tournaments">
+    <ng-container *ngFor="let phase of tnm.matches">
+        <app-phase class="phase" [phase]="phase"></app-phase>
+    </ng-container>
+  </div>
+</ng-container>

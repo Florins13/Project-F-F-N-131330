@@ -1,0 +1,8 @@
+<div>
+  <input type="text" placeholder="Player name" [(ngModel)]="player">
+  <button (click)="addPlayer()">+</button>
+  <div *ngFor="let p of cgt.listOfPlayers">
+    <p>{{p}}</p>
+  </div>
+  <button (click)="createTournament()">Create</button>
+</div>

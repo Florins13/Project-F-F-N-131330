@@ -3,22 +3,37 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginModule} from './login/login.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {RegisterModule} from "./register/register.module";
+import { HomeComponent } from './home/home.component';
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+import { ViewComponent } from './view/view.component';
+import { MatchBoxComponent } from './match-box/match-box.component';
+import { PhaseComponent } from './phase/phase.component';
+import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    NavComponent,
+    HeaderComponent,
+    ViewComponent,
+    MatchBoxComponent,
+    PhaseComponent,
+    NewTournamentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RegisterModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

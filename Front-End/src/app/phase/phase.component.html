@@ -1,0 +1,6 @@
+<ng-container *ngIf="phase">
+<div class="betweenPhases-{{i + 1 }}" *ngFor="let match of phase;let i = index">
+  <app-match-box [game]="match"></app-match-box>
+</div>
+
+</ng-container>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {LoginService} from "./login.service";
+import {LoginService} from "./services/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,11 @@ export class LoginComponent implements OnInit {
     password: ['',Validators.required]
   });
 
-  constructor(private fb: UntypedFormBuilder, private loginService : LoginService) {
+  constructor(private fb: UntypedFormBuilder, private loginService : LoginService, private router : Router) {
   }
 
   ngOnInit(): void {
+
   }
 
   get f(){
@@ -31,7 +33,12 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loginService.getUserFromLogin( this.loginForm.value);
+    this.loginService.getUserFromLogin( this.loginForm.value).subscribe((userInfo)=>{
+
+      localStorage.isAuthenticated = userInfo.authenticated;
+      this.router.navigate(['/home/view'])
+    })
+
   }
 
 }
